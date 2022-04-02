@@ -1,17 +1,11 @@
-/* @import url('https://fonts.googleapis.com/css2?family=Cinzel&family=Raleway&display=swap'); */
-@import url('https://fonts.googleapis.com/css2?family=Raleway&family=Roboto+Slab&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Ubuntu&display=swap');
 
 :root {
   --primaryColor: #f7f7f7;
   --secondaryColor: #0a0a0a;
-  --greyColor: #7c7c7c;
-  --hoverColor: #1cb7e6;
-  --buttonColor: #bdbdbd;
-  --lightgreyColor: #e6e6e6;
 
-  /* --fontHead: 'Cinzel', serif; */
-  --fontHead: 'Roboto Slab', serif;
-  --fontBody: 'Raleway', sans-serif;
+  --fontHead: 'Ubuntu', sans-serif;
+  --fontBody: 'Montserrat', sans-serif;
 }
 
 * {
@@ -63,7 +57,7 @@ button {
 /* Navbar styling */
 header {
   position: fixed;
-  background-color: var(--primaryColor);
+  background-color: var(--secondaryColor);
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -71,20 +65,19 @@ header {
   top: 0;
   z-index: 1;
   height: 80px;
-  padding: 0 4vw;
-  box-shadow: 0 0px 10px 0px var(--secondaryColor);
+  padding: 0 14vw;
+  /* box-shadow: 0 0px 10px 0px var(--secondaryColor); */
 }
 
 nav a {
-  color: var(--secondaryColor);
+  color: var(--primaryColor);
   font-family: var(--fontHead);
-  font-weight: bold;
   letter-spacing: 2px;
 }
 
 nav {
   position: relative;
-  background-color: var(--primaryColor);
+  background-color: var(--secondaryColor);
   width: 100%;
   height: 100%;
   display: flex;
