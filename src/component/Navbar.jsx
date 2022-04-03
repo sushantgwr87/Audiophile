@@ -17,9 +17,6 @@ const Navbar = () => {
         setShowSidebar(false)
     }
 
-    console.log(showSidebar)
-
-
     const handleClick = e => {
         if (sidebar.current.contains(e.target)) {
             // inside click
@@ -54,14 +51,13 @@ const Navbar = () => {
                                     <Link to="/pricing">Speakers</Link>
                                     <Link to="/pricing">Earphones</Link>
                                 </ul>
-                                {/* <button className={styles.nav_modal___btn}>Get an invite</button> */}
-                                <Icon name="Cart" width={40} />
+                                <Icon name="Cart" width={25} fill="#e0e0e0" />
                             </div>
                         </>
                     )
                     :
                     <>
-                        <div ref={sidebar}>
+                        <div style={{top:8,position: "absolute"}} ref={sidebar}>
                             <div className={showSidebar ? styles.nav_mobile_menu___btn_close : styles.nav_mobile_menu___btn_open} onClick={() => setShowSidebar(!showSidebar)}></div>
                             <div className={`${styles.nav_mobile} ${showSidebar ? styles.nav_mobile___show : styles.nav_mobile___hide}`}>
                                 <ul>
@@ -85,19 +81,16 @@ const Navbar = () => {
                                             Earphones
                                         </Link>
                                     </li>
-                                    <li>
-                                        <button className={styles.nav_modal___btn}>Get an invite</button>
-                                    </li>
                                 </ul>
                             </div>
                         </div>
-                        <div>
+                        <div className={styles.nav_mobile_logo}>
                             <Link to="/">
-                                Logo
+                                <Icon name="AudioName" width={150} fill="white" />
                             </Link>
                         </div>
                         <div>
-                            cart
+                            <Icon name="Cart" width={25} fill="#e0e0e0" />
                         </div>
                     </>
                 }
