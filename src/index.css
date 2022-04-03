@@ -1,8 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Ubuntu&display=swap');
 
 :root {
-  --primaryColor: #f7f7f7;
-  --secondaryColor: #0a0a0a;
+  --primaryColor: #FAFAFA;
+  --secondaryColor: #121212;
+  --greyColor_light: #e0e0e0;
+  --greyColor: #b8b8b8;
 
   --fontHead: 'Ubuntu', sans-serif;
   --fontBody: 'Montserrat', sans-serif;
@@ -55,7 +57,7 @@ button {
 }
 
 /* Navbar styling */
-header {
+header {  
   position: fixed;
   background-color: var(--secondaryColor);
   display: flex;
@@ -64,20 +66,20 @@ header {
   width: 100%;
   top: 0;
   z-index: 1;
-  height: 80px;
-  padding: 0 14vw;
-  /* box-shadow: 0 0px 10px 0px var(--secondaryColor); */
+  padding: 20px 10vw;
 }
 
 nav a {
-  color: var(--primaryColor);
+  color: var(--greyColor_light);
   font-family: var(--fontHead);
   letter-spacing: 2px;
 }
 
 nav {
   position: relative;
-  background-color: var(--secondaryColor);
+  background-color: transparent;
+  border-bottom: 1px solid var(--greyColor);
+  padding-bottom: 20px;
   width: 100%;
   height: 100%;
   display: flex;
@@ -103,9 +105,9 @@ footer {
 }
 
 /* main content styling */
-main {
+.App {
   position: relative;
-  padding-top: 80px;
+  padding-top: 100px;
   /* padding-bottom: 50px; */
 }
 
