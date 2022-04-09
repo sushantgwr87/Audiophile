@@ -5,7 +5,7 @@ const SVGComponent = ({
     fill = "currentColor",
     width = "100%",
     height = "100%",
-    // className = "",
+    className = "",
 }) => (
     <svg
         id="Layer_1"
@@ -13,6 +13,7 @@ const SVGComponent = ({
         xmlnsXlink="http://www.w3.org/1999/xlink"
         viewBox="0 0 492.1 122.1"
         xmlSpace="preserve"
+        className={className || ""}
         width={width}
         // style={style}
         height={height}
