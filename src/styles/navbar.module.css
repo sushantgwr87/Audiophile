@@ -24,6 +24,10 @@
     text-transform: uppercase;
 }
 
+.nav_desktop ul a {
+    margin: 0 15px;
+}
+
 .nav_desktop ul a::after,
 .nav_mobile ul a::after {
     content: '';
@@ -106,7 +110,7 @@
     z-index: 2;
     display: inline-block;
     width: 20px;
-    height: 3px;
+    height: 2.5px;
     transition: all 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
@@ -128,7 +132,7 @@
     content: "";
     background-color: var(--primaryColor);
     width: 30px;
-    height: 3px;
+    height: 2.5px;
     transition: all 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
