@@ -51,7 +51,7 @@ const Navbar = () => {
                                     <Link to="/pricing">Speakers</Link>
                                     <Link to="/pricing">Earphones</Link>
                                 </ul>
-                                <Icon name="Cart" width={25} fill="#e0e0e0" />
+                                <Icon name="Cart" width={25} fill="#e0e0e0" className="icon_hover" />
                             </div>
                         </>
                     )
@@ -90,7 +90,7 @@ const Navbar = () => {
                             </Link>
                         </div>
                         <div>
-                            <Icon name="Cart" width={25} fill="#e0e0e0" />
+                            <Icon name="Cart" width={25} fill="#e0e0e0" className="icon_hover" />
                         </div>
                     </>
                 }
