@@ -2,10 +2,10 @@
 
 :root {
   --primaryColor: #FAFAFA;
-  /* --secondaryColor: #121212; */
   --secondaryColor: #090909;
   --greyColor_light: #e0e0e0;
-  --greyColor: #a4a4a4;
+  --greyColor_dark: #5e5e5e;
+  --greyColor: #c1c1c1;
 
   --fontHead: 'Ubuntu', sans-serif;
   --fontBody: 'Montserrat', sans-serif;
@@ -47,7 +47,6 @@ body {
 }
 
 a {
-  color: inherit;
   text-decoration: none;
 }
 
@@ -109,43 +108,6 @@ footer {
 .App {
   position: relative;
   padding-top: 80px;
-}
-
-/* 404 error page or not found page styling */
-.not-found {
-  margin-bottom: 150px;
-  text-align: center;
-}
-
-.not-found h2 {
-  margin-bottom: 20px;
-}
-
-.not-found p {
-  margin-bottom: 50px;
-}
-
-.not-found a {
-  font-size: 16px;
-  border-radius: 10px;
-  padding: 10px;
-  background-color: var(--text2);
-  color: var(--text1);
-}
-
-/* svg arrow styling for invitebutton */
-.arrow {
-  display: inline-block;
-  width: 28px;
-  margin-left: 20px;
-}
-
-/* index page stylings */
-.introduction {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
 }
 
 .icon_hover {
