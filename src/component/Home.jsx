@@ -6,7 +6,7 @@ const introductionData = [
     path: '/assets/headphone_crop2.jpg',
     head: 'create and share your photo stories.',
     body: 'Photosnap is a platform for photographers and visual storytellers. We make it easy to share photos, tell stories and connect with others.',
-    buttonText: 'Get an invite'
+    buttonText: 'See Product'
   },
   {
     path: '',
@@ -26,11 +26,12 @@ const Home = () => {
   return (
     introductionData.map((value, index) => (
       <Card
+        cardQuote={"New Product"}
         imagePath={value.path}
         cardHead={value.head}
         cardBody={value.body}
         isdark={index > 0 ? false : true}
-        isModal={index===0 && true}
+        isModal={index === 0 && true}
         isreverse={index === 1 && true}
         buttonText={value.buttonText}
         key={index}
