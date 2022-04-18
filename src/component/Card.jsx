@@ -1,12 +1,8 @@
 import React from 'react';
-import Icon from '../Icon';
 import styles from '../styles/card.module.css';
-// import Modal from './Modal';
 import { Link } from 'react-router-dom';
 
-const Card = ({ imagePath, cardHead, cardBody, isModal = false, isbutton = true, isdark = true, isreverse = false, buttonText }) => {
-
-    const [modalShow, setModalShow] = React.useState(false);
+const Card = ({ imagePath, cardQuote, cardHead, cardBody, isModal = false, isbutton = true, isdark = true, isreverse = false, buttonText }) => {
 
     return (
         <div className={`${styles.card} ${isdark ? styles.card___dark : styles.card___light} ${isreverse && styles.card___reverse}`}>
@@ -14,27 +10,21 @@ const Card = ({ imagePath, cardHead, cardBody, isModal = false, isbutton = true,
                 <img src={imagePath} alt='CardImage' />
             </div>
             <div className={styles.card_content}>
+                <h5>{cardQuote}</h5>
                 <h3>{cardHead}</h3>
                 <p>{cardBody}</p>
                 {isbutton && (isModal ? (
-                    <button className='card_btn___hover' onClick={() => setModalShow(true)}>
-                        <span>{buttonText}</span>
-                        <div className="arrow">
-                            <Icon name="arrow" fill={isdark ? "#fff" : "#000"} />
-                        </div>
+                    <button className={styles.card_btn}>
+                        {buttonText}
                     </button>
                 ) :
                     <Link to="/">
-                            <button className='card_btn___hover'>
-                                <span>{buttonText}</span>
-                                <div className="arrow">
-                                    <Icon name="arrow" fill={isdark ? "#fff" : "#000"} />
-                                </div>
-                            </button>
+                        <button className={styles.card_btn}>
+                            {buttonText}
+                        </button>
                     </Link>
                 )
                 }
-                {/* <Modal onClose={() => setModalShow(false)} show={modalShow} /> */}
             </div>
         </div>
     );
