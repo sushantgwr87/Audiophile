@@ -46,10 +46,10 @@ const Navbar = () => {
                             </Link>
                             <div className={styles.nav_desktop}>
                                 <ul>
-                                    <Link to="/stories">Home</Link>
-                                    <Link to="/features">Headphones</Link>
-                                    <Link to="/pricing">Speakers</Link>
-                                    <Link to="/pricing">Earphones</Link>
+                                    <Link to="/">Home</Link>
+                                    <Link to="/headphones">Headphones</Link>
+                                    <Link to="/speakers">Speakers</Link>
+                                    <Link to="/earphones">Earphones</Link>
                                 </ul>
                                 <Icon name="Cart" width={25} fill="#e0e0e0" className="icon_hover" />
                             </div>
@@ -62,22 +62,22 @@ const Navbar = () => {
                             <div className={`${styles.nav_mobile} ${showSidebar ? styles.nav_mobile___show : styles.nav_mobile___hide}`}>
                                 <ul>
                                     <li>
-                                        <Link onClick={closeNav} to="/stories">
+                                        <Link onClick={closeNav} to="/">
                                             Home
                                         </Link>
                                     </li>
                                     <li>
-                                        <Link onClick={closeNav} to="/features">
+                                        <Link onClick={closeNav} to="/headphones">
                                             Headphones
                                         </Link>
                                     </li>
                                     <li>
-                                        <Link onClick={closeNav} to="/pricing">
+                                        <Link onClick={closeNav} to="/speakers">
                                             Speakers
                                         </Link>
                                     </li>
                                     <li>
-                                        <Link onClick={closeNav} to="/pricing">
+                                        <Link onClick={closeNav} to="/earphones">
                                             Earphones
                                         </Link>
                                     </li>
