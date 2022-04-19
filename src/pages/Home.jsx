@@ -1,5 +1,5 @@
 import React from 'react';
-import Card from './Card';
+import Card from '../component/Card';
 
 const introductionData = [
   {
@@ -15,7 +15,7 @@ const introductionData = [
     buttonText: 'View the Stories'
   },
   {
-    path: '',
+    path: '/assets/headphone_wearing_person.jpg',
     head: 'Designed for Everyone',
     body: 'Photosnap can help you create stories that resonates with your audience. Our tool is designed for photographers of all levels, brands, businesses you name it.',
     buttonText: 'View the Stories'
@@ -32,7 +32,6 @@ const Home = () => {
         cardBody={value.body}
         isdark={index > 0 ? false : true}
         isModal={index === 0 && true}
-        isreverse={index === 1 && true}
         buttonText={value.buttonText}
         key={index}
       />
