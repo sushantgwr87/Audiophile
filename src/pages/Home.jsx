@@ -4,38 +4,33 @@ import Card from '../component/Card';
 const introductionData = [
   {
     path: '/assets/headphone_crop2.jpg',
-    head: 'create and share your photo stories.',
-    body: 'Photosnap is a platform for photographers and visual storytellers. We make it easy to share photos, tell stories and connect with others.',
+    quote: 'New Product',
+    head: 'XX99 Mark II Headphones',
+    body: 'Experience natural, lifelike audio and exceptional build quality made for the passionate music enthusiast.',
     buttonText: 'See Product'
   },
   {
-    path: '',
-    head: 'Beautiful stories every time',
-    body: 'We provide design templates to ensure your stories look terrific. Easily add photos, text and embed media from other networks, Then share your story with everyone',
-    buttonText: 'View the Stories'
-  },
-  {
     path: '/assets/headphone_wearing_person.jpg',
-    head: 'Designed for Everyone',
-    body: 'Photosnap can help you create stories that resonates with your audience. Our tool is designed for photographers of all levels, brands, businesses you name it.',
-    buttonText: 'View the Stories'
+    head: 'Bringing you the best audio gear',
+    body: 'Located at the heart of New York City, Audiophile is the premier store for high end headphones, earphones, speakers, and audio accessories. We have a large showroom and luxury demonstration rooms available for you to browse and experience a wide range of our products. Stop by our store to meet some of the fantastic people who make Audiophile the best place to buy your portable audio equipment.',
   },
 ]
 
 const Home = () => {
   return (
-    introductionData.map((value, index) => (
+    introductionData.map((value, index) =>
       <Card
-        cardQuote={"New Product"}
+        cardQuote={value.quote}
         imagePath={value.path}
         cardHead={value.head}
         cardBody={value.body}
         isdark={index > 0 ? false : true}
         isModal={index === 0 && true}
+        isbutton={index === 0 && true}
         buttonText={value.buttonText}
         key={index}
       />
-    ))
+    )
   )
 }
 
