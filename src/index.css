@@ -102,12 +102,7 @@ footer {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-}
-
-/* main content styling */
-.App {
-  position: relative;
-  padding-top: 80px;
+  padding: 80px 0;
 }
 
 .icon_hover {
