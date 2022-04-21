@@ -1,6 +1,12 @@
 import React from 'react';
 import Card from '../component/Card';
 
+const productCardData =
+{
+  path: '/assets/headphone_side.png',
+  head: 'Bringing you the best audio gear',
+  body: 'Located at the heart of New York City, Audiophile is the premier store for high end headphones, earphones, speakers, and audio accessories. We have a large showroom and luxury demonstration rooms available for you to browse and experience a wide range of our products. Stop by our store to meet some of the fantastic people who make Audiophile the best place to buy your portable audio equipment.',
+}
 const featuredCardData =
 {
   path: '/assets/headphone_wearing_person.jpg',
@@ -25,6 +31,14 @@ const Home = () => {
         </div>
       </div>
       <div>
+        <Card
+          cardQuote={productCardData.quote}
+          imagePath={productCardData.path}
+          cardHead={productCardData.head}
+          cardBody={productCardData.body}
+          buttonText={productCardData.buttonText}
+          isbutton={true}
+        />
         <Card
           cardQuote={featuredCardData.quote}
           imagePath={featuredCardData.path}
