@@ -1,8 +1,11 @@
-import React from 'react'
+import React from 'react';
+import Card from '../component/Card';
 
 const Headphones = () => {
   return (
-    <div>Headphones</div>
+    <div>
+      <Card />
+    </div>
   )
 }
 
