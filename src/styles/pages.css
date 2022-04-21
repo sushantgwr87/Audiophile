@@ -2,123 +2,204 @@
 
 /* Home Page Styling */
 .featured_card {
+  position: relative;
+  display: grid;
+  padding-left: 10vw;
+  background-color: var(--secondaryColor);
+  grid-template-columns: repeat(12, 1fr);
+  align-items: center;
+  width: 100%;
+}
+
+.featured_card___photo {
+  position: relative;
+  grid-area: 1 / 5 / 1 / -1;
+  width: 100%;
+  height: 100%;
+}
+
+.featured_card___photo img {
+  display: block;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.featured_card___content {
+  position: absolute;
+  grid-area: 1 / 1 / 1 / 6;
+  width: 100%;
+  padding: 100px 5vw 100px 0;
+  overflow: hidden;
+}
+
+.featured_card___content h5,
+h3 {
+  font-family: var(--fontHead);
+  text-transform: uppercase;
+}
+
+.featured_card___content h5 {
+  font-size: calc(10px + 0.4vw);
+  font-weight: lighter;
+  letter-spacing: 10px;
+  color: var(--greyColor_dark);
+  margin-bottom: 25px;
+}
+
+.featured_card___content h3 {
+  color: var(--greyColor_light);
+  font-size: calc(20px + 2vw);
+  letter-spacing: 2px;
+}
+
+.featured_card___content p {
+  font-family: var(--fontBody);
+  color: var(--greyColor);
+  font-size: calc(10px + 0.5vw);
+  padding: 30px 0;
+}
+
+.featured_card___content button {
+  font-family: var(--fontBody);
+  font-size: calc(12px + 0.2vw);
+  color: var(--greyColor_light);
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-top: 30px;
+  padding: 10px 20px;
+  background-color: rgb(255, 89, 0);
+}
+
+@media only screen and (max-width: 1000px) {
+  .featured_card {
     position: relative;
-    display: grid;
-    padding-left: 10vw;
-    background-color: var(--secondaryColor);
-    grid-template-columns: repeat(12, 1fr);
+    display: flex;
+    flex-direction: row;
     align-items: center;
+    flex-wrap: wrap;
+    padding: 0;
     width: 100%;
   }
-  
+
   .featured_card___photo {
     position: relative;
-    grid-area: 1 / 5 / 1 / -1;
+    display: block;
     width: 100%;
-    height: 100%;
+    height: 100vh;
   }
-  
+
   .featured_card___photo img {
     display: block;
     object-fit: cover;
     width: 100%;
     height: 100%;
   }
-  
+
   .featured_card___content {
     position: absolute;
-    grid-area: 1 / 1 / 1 / 6;
+    text-align: center;
     width: 100%;
-    padding: 100px 5vw 100px 0;
+    padding: 0 18vw;
     overflow: hidden;
   }
-  
-  .featured_card___content h5,
-  h3 {
-    font-family: var(--fontHead);
-    text-transform: uppercase;
-  }
-  
+
   .featured_card___content h5 {
-    font-size: calc(10px + 0.4vw);
-    font-weight: lighter;
-    letter-spacing: 10px;
-    color: var(--greyColor_dark);
-    margin-bottom: 25px;
+    font-size: calc(18px + 0.3vw);
   }
-  
+
   .featured_card___content h3 {
-    color: var(--greyColor_light);
-    font-size: calc(20px + 2vw);
-    letter-spacing: 2px;
+    font-size: calc(20px + 4vw);
   }
-  
+
   .featured_card___content p {
-    font-family: var(--fontBody);
-    color: var(--greyColor);
-    font-size: calc(10px + 0.5vw);
-    padding: 30px 0;
+    font-size: calc(16px + 0.3vw);
   }
-  
+
   .featured_card___content button {
-    font-family: var(--fontBody);
-    font-size: calc(12px + 0.2vw);
-    color: var(--greyColor_light);
-    font-weight: bold;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    margin-top: 30px;
+    font-size: 16px;
     padding: 10px 20px;
-    background-color: rgb(255, 89, 0);
   }
-  
-  @media only screen and (max-width: 1000px) {
-    .featured_card {
-      position: relative;
+}
+
+.advertisement_card {
+  position: relative;
+  display: grid;
+  padding: 20px 10vw;
+  grid-template-columns: repeat(12, 1fr);
+  align-items: center;
+}
+
+.advertisement_card___photo {
+  position: relative;
+  margin: auto;
+  width: 100%;
+  grid-area: 1 / 8 / 1 / -1;
+  background-color: var(--greyColor_light);
+  height: 80%;
+}
+
+.advertisement_card___photo img {
+  border-radius: 10px;
+  width: 100%;
+  object-fit: cover;
+  height: 100%;
+}
+
+.advertisement_card___content {
+  display: block;
+  grid-area: 1 / 1 / 1 / 7;
+  padding: 100px 5vw 100px 0;
+  width: 100%;
+}
+
+.advertisement_card___content h3 {
+  font-family: var(--fontHead);
+  text-transform: uppercase;
+  font-size: calc(16px + 1vw);
+  letter-spacing: 2px;
+  color: var(--secondaryColor);
+}
+
+.advertisement_card___content h3 span {
+  color: rgb(236, 66, 19);
+}
+
+.advertisement_card___content p {
+  color: var(--greyColor);
+  font-family: var(--fontBody);
+  font-size: calc(10px + 0.3vw);
+  padding: 20px 0;
+}
+
+@media only screen and (max-width: 700px) {
+  .advertisement_card___content {
+      grid-area: 1 / 1 / 1 / 8;
+  }
+
+  .advertisement_card___photo {
+      grid-area: 1 / 8 / 1 / -1;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .advertsiement_card {
       display: flex;
-      flex-direction: row;
+      justify-content: center;
+      flex-direction: column;
       align-items: center;
-      flex-wrap: wrap;
-      padding: 0;
       width: 100%;
-    }
-  
-    .featured_card___photo {
-      position: relative;
-      display: block;
-      width: 100%;
-      height: 100vh;
-    }
-  
-    .featured_card___photo img {
-      display: block;
-      object-fit: cover;
-      width: 100%;
-      height: 100%;
-    }
-  
-    .featured_card___content {
-      position: absolute;
-      text-align: center;
-      width: 100%;
-      padding: 0 18vw;
-      overflow: hidden;
-    }
-  
-    .featured_card___content h5 {
-      font-size: calc(18px + 0.3vw);
-    }
-  
-    .featured_card___content h3 {
-      font-size: calc(20px + 4vw);
-    }
-  
-    .featured_card___content p {
-      font-size: calc(16px + 0.3vw);
-    }
-  
-    .featured_card___content button {
-      font-size: 16px;
-      padding: 10px 20px;
-    }
   }
+
+  .advertisement_card___content {
+      padding: 70px 5vw;
+  }
+
+  .advertisement_card___photo {
+      position: relative;
+      width: 100%;
+      height: 50vh;
+      display: block;
+  }
+}
