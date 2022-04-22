@@ -5,7 +5,7 @@
   --secondaryColor: #090909;
   --greyColor_light: #e9e9e9;
   --greyColor_dark: #5e5e5e;
-  --greyColor: #aaaaaa;
+  --greyColor: #b5b5b5;
   --buttonColor: #fb5717;
 
   --fontHead: 'Ubuntu', sans-serif;
@@ -118,4 +118,10 @@ footer {
 .icon_hover:hover {
   background-color: var(--primaryColor);
   fill: #121212;
+}
+
+@media only screen and (max-width: 400px) {
+  header {
+    padding: 20px 10px;
+  }
 }
