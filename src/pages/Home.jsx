@@ -3,7 +3,7 @@ import Card from '../component/Card';
 
 const productCardData =
 {
-  path: '/assets/headphone_white2.png',
+  path: '/assets/headphone_side.png',
   head: 'Bringing you the best audio gear',
   body: 'Located at the heart of New York City, Audiophile is the premier store for high end headphones, earphones, speakers, and audio accessories. We have a large showroom and luxury demonstration rooms available for you to browse and experience a wide range of our products. Stop by our store to meet some of the fantastic people who make Audiophile the best place to buy your portable audio equipment.',
   buttonText : 'See product'
@@ -32,7 +32,21 @@ const Home = () => {
           cardHead={productCardData.head}
           cardBody={productCardData.body}
           buttonText={productCardData.buttonText}
-          isbutton={true}
+          // isbutton={true}
+          isreverse={true}
+          productPrice={2000}
+          isProduct={true}
+        />
+        <Card
+          cardQuote={productCardData.quote}
+          imagePath={productCardData.path}
+          cardHead={productCardData.head}
+          cardBody={productCardData.body}
+          buttonText={productCardData.buttonText}
+          // isbutton={true}
+          // isreverse={true}
+          productPrice={2000}
+          isProduct={true}
         />
       </div>
       <div className='advertisement_card'>
