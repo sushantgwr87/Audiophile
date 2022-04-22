@@ -1,8 +1,19 @@
-import React from 'react';
+import { useState } from 'react';
 import styles from '../styles/card.module.css';
 import { Link } from 'react-router-dom';
 
-const Card = ({ imagePath, cardQuote, cardHead, cardBody, buttonText, productPrice, isbutton = true, isProduct = false, isreverse = false }) => {
+const Card = ({ imagePath, cardQuote, cardHead, cardBody, buttonText, productPrice, isbutton = false, isProduct = false, isreverse = false }) => {
+
+    const [count, setCount] = useState(1);
+
+    const handleDecrement = () => {
+        if (count === 0)
+            return;
+        setCount(count - 1);
+    }
+    const handleIncrement = () => {
+        setCount(count + 1);
+    }
 
     return (
         <div className={`${styles.card} ${isreverse && styles.card___reverse}`}>
@@ -22,15 +33,15 @@ const Card = ({ imagePath, cardQuote, cardHead, cardBody, buttonText, productPri
                 )}
                 {isProduct && (
                     <>
-                        <p>{productPrice}</p>
+                        <h4>&#8377; {productPrice.toLocaleString()}</h4>
                         <div className={styles.card_product}>
                             <div className={styles.card_cart_counter}>
-                                <button>-</button>
-                                <span>1 Count</span>
-                                <button>+</button>
+                                <button onClick={handleDecrement}>-</button>
+                                <span>{count}</span>
+                                <button onClick={handleIncrement}>+</button>
                             </div>
                             <button className={styles.card_btn}>
-                                {buttonText}
+                                Add To Cart
                             </button>
                         </div>
                     </>
