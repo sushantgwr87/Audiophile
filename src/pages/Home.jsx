@@ -1,13 +1,5 @@
 import React from 'react';
-import Card from '../component/Card';
-
-const productCardData =
-{
-  path: '/assets/headphone_side.png',
-  head: 'Bringing you the best audio gear',
-  body: 'Located at the heart of New York City, Audiophile is the premier store for high end headphones, earphones, speakers, and audio accessories. We have a large showroom and luxury demonstration rooms available for you to browse and experience a wide range of our products. Stop by our store to meet some of the fantastic people who make Audiophile the best place to buy your portable audio equipment.',
-  buttonText : 'See product'
-}
+import { Link } from 'react-router-dom';
 
 const Home = () => {
   return (
@@ -25,29 +17,40 @@ const Home = () => {
           </button>
         </div>
       </div>
-      <div>
-        <Card
-          cardQuote={productCardData.quote}
-          imagePath={productCardData.path}
-          cardHead={productCardData.head}
-          cardBody={productCardData.body}
-          buttonText={productCardData.buttonText}
-          // isbutton={true}
-          isreverse={true}
-          productPrice={2000}
-          isProduct={true}
-        />
-        <Card
-          cardQuote={productCardData.quote}
-          imagePath={productCardData.path}
-          cardHead={productCardData.head}
-          cardBody={productCardData.body}
-          buttonText={productCardData.buttonText}
-          // isbutton={true}
-          // isreverse={true}
-          productPrice={2000}
-          isProduct={true}
-        />
+      <div className="product_carousel">
+        <div className='product_carousel___item'>
+          <div className="carousel_image">
+            <img src="/assets/headphone_white2.png" alt="product" />
+          </div>
+          <div className="carousel_content">
+            <h4>Heaphones</h4>
+            <Link to={"/headphones"}>
+              Shop
+            </Link>
+          </div>
+        </div>
+        <div className='product_carousel___item'>
+          <div className="carousel_image">
+            <img src="/assets/headphone_white2.png" alt="product" />
+          </div>
+          <div className="carousel_content">
+            <h4>Heaphones</h4>
+            <Link to={"/headphones"}>
+              Shop
+            </Link>
+          </div>
+        </div>
+        <div className='product_carousel___item'>
+          <div className="carousel_image">
+            <img src="/assets/headphone_white2.png" alt="product" />
+          </div>
+          <div className="carousel_content">
+            <h4>Heaphones</h4>
+            <Link to={"/headphones"}>
+              Shop
+            </Link>
+          </div>
+        </div>
       </div>
       <div className='advertisement_card'>
         <div className='advertisement_card___photo'>
