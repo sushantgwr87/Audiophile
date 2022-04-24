@@ -50,14 +50,34 @@ const Home = () => {
           </div>
         )}
       </div>
-      <div className="featured_product___card">
-        <div className="featured_product___image">
-          <img src="/assets/speaker.png" alt="product" />
+      <div className="featured_product___card_list">
+        <div className="featured_product___card">
+          <div className="featured_product___image">
+            <img src="/assets/speaker2.png" alt="product" />
+          </div>
+          <div className='featured_product___content'>
+            <h3>ZX9 Speaker</h3>
+            <p>Upgrade to premium speakers that phenomenally build to deliver truly remarkable sound</p>
+            <button>See Product</button>
+          </div>
         </div>
-        <div className='featured_product___content'>
-          <h3>Speaker</h3>
-          <p>Located at the heart of New York City, Audiophile is the premier store for high end headphones, earphones, speakers, and audio accessories. We have a large showroom and luxury demonstration rooms available for you to browse and experience a wide range of our products. Stop by our store to meet some of the fantastic people who make Audiophile the best place to buy your portable audio equipment.</p>
-          <button>See Product</button>
+        <div className="featured_product___card">
+          <div className="featured_product___image">
+            <img src="/assets/bluetooth_speaker.png" alt="product" />
+          </div>
+          <div className='featured_product___content'>
+            <h3>ZX7 Speaker</h3>
+            <button>See Product</button>
+          </div>
+        </div>
+        <div className="featured_product___card">
+          <div className="featured_product___image">
+            <img src="/assets/earphone.jpg" alt="product" />
+          </div>
+          <div className='featured_product___content'>
+            <h3>YX1 Earphones</h3>
+            <button>See Product</button>
+          </div>
         </div>
       </div>
       <div className='advertisement_card'>
