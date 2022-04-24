@@ -6,7 +6,7 @@
   --greyColor_light: #e9e9e9;
   --greyColor_dark: #5e5e5e;
   --greyColor: #b5b5b5;
-  --buttonColor: #fb5717;
+  --buttonColor: rgb(255, 83, 16);
 
   --fontHead: 'Ubuntu', sans-serif;
   --fontBody: 'Montserrat', sans-serif;
