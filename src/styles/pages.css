@@ -75,10 +75,12 @@ h3 {
 .product_carousel {
   position: relative;
   display: flex;
+  /* flex-wrap: wrap; */
   justify-content: center;
-  align-items: center;
+  align-items: baseline;
+  text-align: center;
   width: 100%;
-  padding: 30px 0;
+  padding: 8vw 9vw 5vw;
 }
 
 .product_carousel___item {
@@ -93,23 +95,27 @@ h3 {
   height: 200px;
   margin: 0 20px;
   text-align: center;
+  flex: 1;
 }
 
 .carousel_image {
   position: relative;
   top: -50px;
-  width: 120px;
-  height: auto;
+  /* width: 170px; */
+  height: 200px;
 }
 
 .carousel_image img{
   display: block;
   width: 100%;
+  height: 100%;
 }
 
 .carousel_content {
   position: relative;
   top: -50px;
+  width: 100%;
+  height: 100%;
   display: block;
   font-family: var(--fontHead);
   text-transform: uppercase;
@@ -122,6 +128,21 @@ h3 {
 
 .carousel_content a {
   font-size: 12px;
+}
+
+@media only screen and (max-width: 800px) {
+  .product_carousel {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+    flex-direction: column;
+    padding: 80px 20px;
+  }
+  .product_carousel___item {
+    width: 100%;
+    margin: auto;
+  }
 }
 
 @media only screen and (max-width: 1000px) {
@@ -247,4 +268,25 @@ h3 {
     height: 50vh;
     display: block;
   }
+}
+
+/* headphones page styling */
+.page_title {
+  position: relative;
+  width: 100%;
+  text-align: center;
+  padding: 20px 0 30px;
+  font-family: var(--fontHead);
+  font-size: calc(20px + 0.3vw);
+  text-transform: uppercase;
+  background-color: var(--secondaryColor);
+  color: var(--greyColor_light);
+}
+.page_content {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 40px 0;
 }
