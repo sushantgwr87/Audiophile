@@ -1,6 +1,24 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+const productData = [
+  {
+    path: "/assets/headphone_white2.png",
+    head: "Headphones",
+    link: "/headphones"
+  },
+  {
+    path: "/assets/earpods_purple2.png",
+    head: "Earphones",
+    link: "/earphones"
+  },
+  {
+    path: "/assets/speaker_top2.png",
+    head: "Speakers",
+    link: "/speakers"
+  },
+]
+
 const Home = () => {
   return (
     <>
@@ -18,38 +36,28 @@ const Home = () => {
         </div>
       </div>
       <div className="product_carousel">
-        <div className='product_carousel___item'>
-          <div className="carousel_image">
-            <img src="/assets/headphone_white2.png" alt="product" />
+        {productData.map((value, index) =>
+          <div className='product_carousel___item' key={index}>
+            <div className="carousel_image">
+              <img src={value.path} alt="product" />
+            </div>
+            <div className="carousel_content">
+              <h4>{value.head}</h4>
+              <Link to={value.link}>
+                Shop
+              </Link>
+            </div>
           </div>
-          <div className="carousel_content">
-            <h4>Heaphones</h4>
-            <Link to={"/headphones"}>
-              Shop
-            </Link>
-          </div>
+        )}
+      </div>
+      <div className="featured_product___card">
+        <div className="featured_product___image">
+          <img src="/assets/speaker.png" alt="product" />
         </div>
-        <div className='product_carousel___item'>
-          <div className="carousel_image">
-            <img src="/assets/headphone_white2.png" alt="product" />
-          </div>
-          <div className="carousel_content">
-            <h4>Heaphones</h4>
-            <Link to={"/headphones"}>
-              Shop
-            </Link>
-          </div>
-        </div>
-        <div className='product_carousel___item'>
-          <div className="carousel_image">
-            <img src="/assets/headphone_white2.png" alt="product" />
-          </div>
-          <div className="carousel_content">
-            <h4>Heaphones</h4>
-            <Link to={"/headphones"}>
-              Shop
-            </Link>
-          </div>
+        <div className='featured_product___content'>
+          <h3>Speaker</h3>
+          <p>Located at the heart of New York City, Audiophile is the premier store for high end headphones, earphones, speakers, and audio accessories. We have a large showroom and luxury demonstration rooms available for you to browse and experience a wide range of our products. Stop by our store to meet some of the fantastic people who make Audiophile the best place to buy your portable audio equipment.</p>
+          <button>See Product</button>
         </div>
       </div>
       <div className='advertisement_card'>
