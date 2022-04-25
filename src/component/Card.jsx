@@ -11,7 +11,8 @@ const Card = ({
     productPrice = null,
     isbutton = false,
     isProduct = false,
-    isreverse = false
+    isreverse = false,
+    buttonLink = null,
 }) => {
 
     const [count, setCount] = useState(1);
@@ -37,7 +38,7 @@ const Card = ({
                 {cardHead && <h3>{cardHead}</h3>}
                 {cardBody && <p>{cardBody}</p>}
                 {isbutton && (
-                    <Link to="/">
+                    <Link to={buttonLink}>
                         <button className={styles.card_btn}>
                             {buttonText}
                         </button>
@@ -45,7 +46,7 @@ const Card = ({
                 )}
                 {isProduct && (
                     <>
-                        <h4>&#8377; {productPrice.toLocaleString()}</h4>
+                        {productPrice && <h4>&#8377; {productPrice.toLocaleString()}</h4>}
                         <div className={styles.card_product}>
                             <div className={styles.card_cart_counter}>
                                 <button onClick={handleDecrement}>-</button>
