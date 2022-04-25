@@ -31,8 +31,6 @@ const productData = [
 const Product = () => {
 
     const { category, id } = useParams();
-    console.log(category)
-    console.log(id)
 
     return (
         <div className='product_page'>
@@ -64,13 +62,9 @@ const Product = () => {
                 </div>
             </div>
             <div className="product_page___grid_image">
-                <div className="grid_image___left">
-                    <img src={`/assets/${category}/image1.png`} alt="Headphone" />
-                    <img src={`/assets/${category}/image2.png`} alt="Headphone" />
-                </div>
-                <div className="grid_image___right">
-                    <img src={`/assets/${category}/image3.png`} alt="Headphone" />
-                </div>
+                <img src={`/assets/${category}/image1.png`} alt="Headphone" />
+                <img src={`/assets/${category}/image2.png`} alt="Headphone" />
+                <img src={`/assets/${category}/image3.png`} alt="Headphone" />
             </div>
             <div className="product_carousel">
                 {productData.map((value, index) =>
