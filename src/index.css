@@ -47,6 +47,7 @@ body {
 }
 
 a {
+  display: inline-block;
   text-decoration: none;
 }
 
@@ -54,6 +55,10 @@ button {
   cursor: pointer;
   border: none;
   font-family: var(--fontBody);
+}
+
+ul {
+  list-style-type: none;
 }
 
 /* Navbar styling */
