@@ -3,6 +3,7 @@ import Footer from "./component/Footer";
 import Headphones from "./pages/Headphones";
 import Earphones from "./pages/Earphones";
 import Speakers from "./pages/Speakers";
+import Product from "./pages/Product";
 import Home from "./pages/Home";
 import ScrollToTop from "./component/ScrollToTop";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -18,7 +19,7 @@ function App() {
             <Route path="/headphones" element={<Headphones />} />
             <Route path="/speakers" element={<Speakers />} />
             <Route path="/earphones" element={<Earphones />} />
-
+            <Route path="/product/:category/:id" element={<Product />} />
             {/* <Route component={NotFound} /> */}
           </Routes>
         </div>
