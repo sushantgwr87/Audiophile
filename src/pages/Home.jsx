@@ -30,9 +30,9 @@ const Home = () => {
           <h5>New Product</h5>
           <h3>XX99 Mark II Headphones</h3>
           <p>Experience natural, lifelike audio and exceptional build quality made for the passionate music enthusiast.</p>
-          <button>
+          <Link to={`/product/headphone/${4}`}>
             See Product
-          </button>
+          </Link>
         </div>
       </div>
       <div className="product_carousel">
@@ -58,7 +58,7 @@ const Home = () => {
           <div className='featured_product___content'>
             <h3>ZX9 Speaker</h3>
             <p>Upgrade to premium speakers that phenomenally build to deliver truly remarkable sound</p>
-            <button>See Product</button>
+            <Link to={`/product/speaker/${1}`}>See Product</Link>
           </div>
         </div>
         <div className="featured_product___card">
@@ -67,7 +67,7 @@ const Home = () => {
           </div>
           <div className='featured_product___content'>
             <h3>ZX7 Speaker</h3>
-            <button>See Product</button>
+            <Link to={`/product/speaker/${2}`}>See Product</Link>
           </div>
         </div>
         <div className="featured_product___card">
@@ -76,7 +76,7 @@ const Home = () => {
           </div>
           <div className='featured_product___content'>
             <h3>YX1 Earphones</h3>
-            <button>See Product</button>
+            <Link to={`/product/earphone/${3}`}>See Product</Link>
           </div>
         </div>
       </div>
