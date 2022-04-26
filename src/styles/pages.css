@@ -495,6 +495,7 @@ h3 {
 }
 
 .product_page___box ul li {
+  text-align: left;
   color: var(--greyColor_dark);
   text-transform: capitalize;
 }
