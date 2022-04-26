@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import useBreakpoints from '../customHook/useBreakpoints';
 import styles from '../styles/navbar.module.css';
 import Icon from '../Icon';
+import CartModal from './CartModal';
 // import useMountTransition from '../customHook/useMountTransition';
 
 const Navbar = () => {
@@ -10,8 +11,15 @@ const Navbar = () => {
 
     const [showSidebar, setShowSidebar] = useState(false);
 
+    const [modalShow, setModalShow] = useState(false);
+
     // create a React ref for the sidebar element
     const sidebar = useRef(false);
+
+    const handleModalNav = () => {
+        // setShowSidebar(!showSidebar);
+        setModalShow(true);
+    }
 
     const closeNav = () => {
         setShowSidebar(false)
@@ -51,13 +59,13 @@ const Navbar = () => {
                                     <Link to="/speakers">Speakers</Link>
                                     <Link to="/earphones">Earphones</Link>
                                 </ul>
-                                <Icon name="Cart" width={25} fill="#e0e0e0" className="icon_hover" />
+                                <button onClick={handleModalNav}><Icon name="Cart" width={25} fill="#e0e0e0" className="icon_hover" /></button>
                             </div>
                         </>
                     )
                     :
                     <>
-                        <div style={{top:8,position: "absolute"}} ref={sidebar}>
+                        <div style={{ top: 8, position: "absolute" }} ref={sidebar}>
                             <div className={showSidebar ? styles.nav_mobile_menu___btn_close : styles.nav_mobile_menu___btn_open} onClick={() => setShowSidebar(!showSidebar)}></div>
                             <div className={`${styles.nav_mobile} ${showSidebar ? styles.nav_mobile___show : styles.nav_mobile___hide}`}>
                                 <ul>
@@ -89,11 +97,10 @@ const Navbar = () => {
                                 <Icon name="AudioName" width={150} fill="white" />
                             </Link>
                         </div>
-                        <div>
-                            <Icon name="Cart" width={25} fill="#e0e0e0" className="icon_hover" />
-                        </div>
+                        <button onClick={handleModalNav}><Icon name="Cart" width={25} fill="#e0e0e0" className="icon_hover" /></button>
                     </>
                 }
+                <CartModal onClose={() => setModalShow(false)} show={modalShow} />
             </nav>
         </header>
     );
