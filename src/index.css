@@ -55,6 +55,7 @@ button {
   cursor: pointer;
   border: none;
   font-family: var(--fontBody);
+  background: none;
 }
 
 ul {
@@ -113,6 +114,7 @@ footer {
 
 .icon_hover {
   position: relative;
+  cursor: pointer;
   border-radius: 5px;
   padding: 5px;
   width: 40px;
