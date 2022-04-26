@@ -62,9 +62,9 @@ const Product = () => {
                 </div>
             </div>
             <div className="product_page___grid_image">
-                <img src={`/assets/${category}/image1.png`} alt="Headphone" />
-                <img src={`/assets/${category}/image2.png`} alt="Headphone" />
-                <img src={`/assets/${category}/image3.png`} alt="Headphone" />
+                <img src={`/assets/${category}/image1.png`} alt="Product" />
+                <img src={`/assets/${category}/image2.png`} alt="Product" />
+                <img src={`/assets/${category}/image3.png`} alt="Product" />
             </div>
             <div className="product_carousel">
                 {productData.map((value, index) =>
