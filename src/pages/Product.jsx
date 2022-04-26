@@ -7,7 +7,6 @@ const product = {
     quote: "New Product",
     head: "XX99 Mark II Headphones",
     body: "Experience natural, lifelike audio and exceptional build quality made for the passionate music enthusiast.",
-    buttonText: "See Product"
 }
 
 const productData = [
@@ -30,7 +29,7 @@ const productData = [
 
 const Product = () => {
 
-    const { category, id } = useParams();
+    const { category } = useParams();
 
     return (
         <div className='product_page'>
@@ -40,7 +39,6 @@ const Product = () => {
                 cardQuote={product.quote}
                 cardBody={product.body}
                 cardHead={product.head}
-                buttonText={product.buttonText}
                 productPrice={2999}
                 isProduct
                 isreverse
@@ -48,16 +46,18 @@ const Product = () => {
             <div className="product_page___feature_container">
                 <div className="product_page___feature">
                     <h3>Features</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque eius alias, deserunt maxime similique quibusdam qui neque dolor non animi mollitia, est praesentium aliquid, cum eligendi eos. Quis, similique sit.</p>
+                    <p>Morning days given saying let herb shall upon created you signs. Land night beast behold signs void shall have i creature said and heaven. Lights moved can't forth you're land brought great spirit. Light over face isn't multiply moveth greater image darkness called divided void there fruitful sixth them shall his a blessed from. Creeping.</p>
+                    <br />
+                    <p>Stars won't, don't said hath doesn't greater winged darkness itself So shall years they're said. Given light so two beginning bring saying good meat greater there kind fruit, in. Unto gathered very under under image don't one beast, day. All thing land female rule moveth.</p>
                 </div>
                 <div className="product_page___box">
                     <h3>In The Box</h3>
                     <ul>
-                        <li><span>1x</span>headset</li>
-                        <li><span>1x</span>headset</li>
-                        <li><span>1x</span>headset</li>
-                        <li><span>1x</span>headset</li>
-                        <li><span>1x</span>headset</li>
+                        <li><span>1x</span> {category} unit</li>
+                        <li><span>2x</span>Replacement Earcup</li>
+                        <li><span>1x</span> User Manual</li>
+                        <li><span>1x</span> 5mm Audio cable</li>
+                        <li><span>1x</span> Travel Bag</li>
                     </ul>
                 </div>
             </div>
