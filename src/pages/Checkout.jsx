@@ -9,17 +9,23 @@ const Checkout = () => {
       <div className="checkout_form">
         <h2>Checkout</h2>
         <form method="post">
+          <h4>Billing Details</h4>
           <div className="form___billing_details">
-            <h4>Billing Details</h4>
-            <label htmlFor="name">Name</label>
-            <input type="text" name="name" id="name" />
-            <label htmlFor="email">Email Address</label>
-            <input type="email" name='email' id='email' />
-            <label htmlFor="phone">Phone No.</label>
-            <input type="number" name='phone' id='phone' />
+            <div className='form_input___name'>
+              <label htmlFor="name">Name</label>
+              <input type="text" name="name" id="name" />
+            </div>
+            <div className='form_input___email'>
+              <label htmlFor="email">Email Address</label>
+              <input type="email" name='email' id='email' />
+            </div>
+            <div className='form_input___phone'>
+              <label htmlFor="phone">Phone No.</label>
+              <input type="number" name='phone' id='phone' />
+            </div>
           </div>
+          <h4>Shipping Details</h4>
           <div className="form___shipping_details">
-            <h4>Shipping Details</h4>
             <label htmlFor="address">Address</label>
             <input type="text" name="address" id="address" />
             <label htmlFor="zip">Zip Postel Code</label>
@@ -29,8 +35,8 @@ const Checkout = () => {
             <label htmlFor="country">Country</label>
             <input type="text" name='country' id='country' />
           </div>
+          <h4>Payment Details</h4>
           <div className="form___payment_details">
-            <h4>Payment Details</h4>
             <label htmlFor="payment_type">Payment Type</label>
             <input required type="radio" name="payment_type" value="e-Money" id="payment_type" />
             <label htmlFor="emoney">e-Money</label>
