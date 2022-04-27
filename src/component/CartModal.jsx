@@ -18,29 +18,44 @@ const CartModal = ({ show, onClose }) => {
     return () => document.body.removeEventListener("keydown", closeOnEscapeKeyDown);
   }, [onClose]);
 
+  const isCartFull = true;
+
+  const cartEmpty = (
+    <div className={styles.modal___cart_empty}>
+      <h3>Cart</h3>
+      <h2>Cart is Empty</h2>
+    </div>
+  )
+
+  const cartFilled = (
+    <>
+      <div className={styles.modal_header}>
+        <h3>Cart - <span>2</span></h3>
+        <button>Remove All</button>
+      </div>
+      <div className={styles.modal_body}></div>
+      <div className={styles.modal_footer}>
+        <div className={styles.modal_footer___total_bill}>
+          <h3>Total</h3>
+          <h4>&#8377; 2,999</h4>
+        </div>
+        <Link to={"/checkout"} onClick={onClose}>Continue to Payout</Link>
+      </div>
+    </>
+  )
+
   const modalContent = hasTransitionedIn || show ? (
     <div className={`${styles.modal_overlay} ${hasTransitionedIn && show ? styles.modal_show : styles.modal_hide}`} onClick={onClose}>
       <div className={`${styles.modal} ${hasTransitionedIn && show ? styles.modal_show : styles.modal_hide}`} onClick={e => e.stopPropagation()}>
-          <div className={styles.modal_header}>
-            <h3>Cart - <span>2</span></h3>
-            <button>Remove All</button>
-          </div>
-          <div className={styles.modal_body}></div>
-          <div className={styles.modal_footer}>
-            <div className={styles.modal_footer___total_bill}>
-              <h3>Total</h3>
-              <h2>value</h2>
-            </div>
-            <Link to={"/checkout"} onClick={onClose}>Continue to Payout</Link>
-          </div>
+        {isCartFull ? cartFilled : cartEmpty}
       </div>
     </div>
   ) : null
 
-    return ReactDOM.createPortal(
-      modalContent,
-      document.getElementById("modal")
-    );
+  return ReactDOM.createPortal(
+    modalContent,
+    document.getElementById("modal")
+  );
 };
 
 export default CartModal;
