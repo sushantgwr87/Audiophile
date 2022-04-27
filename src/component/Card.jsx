@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import styles from '../styles/card.module.css';
 import { Link } from 'react-router-dom';
+import CounterButton from './CounterButton';
 
 const Card = ({
     imagePath = null,
@@ -15,16 +16,13 @@ const Card = ({
     buttonLink = null,
 }) => {
 
-    const [count, setCount] = useState(1);
+    const [countValue,setCountValue] = useState(1);
 
-    const handleDecrement = () => {
-        if (count === 0)
-            return;
-        setCount(count - 1);
+    const handleCounterValue = (value) => {
+        setCountValue(value)
     }
-    const handleIncrement = () => {
-        setCount(count + 1);
-    }
+
+    console.log(countValue)
 
     return (
         <div className={`${styles.card} ${isreverse && styles.card___reverse}`}>
@@ -48,11 +46,12 @@ const Card = ({
                     <>
                         {productPrice && <h4>&#8377; {productPrice.toLocaleString()}</h4>}
                         <div className={styles.card_product}>
-                            <div className={styles.card_cart_counter}>
+                            {/* <div className={styles.card_cart_counter}>
                                 <button onClick={handleDecrement}>-</button>
                                 <span>{count}</span>
                                 <button onClick={handleIncrement}>+</button>
-                            </div>
+                            </div> */}
+                            <CounterButton handleCallback={handleCounterValue} />
                             <button className={styles.card_btn}>
                                 Add To Cart
                             </button>
