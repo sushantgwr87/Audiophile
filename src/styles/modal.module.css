@@ -4,7 +4,7 @@
     background: var(--primaryColor);
     width: 30%;
     border-radius: 10px;
-    padding: 40px 5vw;
+    padding: 30px;
     text-transform: uppercase;
     transform: translateY(100vw);
     opacity: 0;
@@ -48,10 +48,98 @@
     transition: all 0.4s ease;
 }
 
+.modal___cart_empty {
+    text-align: center;
+    width: 100%;
+}
+
+.modal___cart_empty h3 {
+    font-size: calc(18px + 0.3vw);
+}
+
+.modal___cart_empty h2{
+    padding: 50px 0 30px 0;
+    font-size: calc(18px + 0.2vw);
+    font-family: var(--fontBody);
+    color: var(--greyColor);
+}
+
 .modal_header {
     position: relative;
-    display: block;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     width: 100%;
+    font-family: var(--fontHead);
+}
+
+.modal_header h3 {
+    font-size: calc(18px + 0.3vw);
+}
+
+.modal_header h3 span {
+    color: var(--buttonColor);
+}
+
+.modal_header button {
+    padding: 10px 20px;
+    font-weight: bold;
+    outline: 2px solid var(--greyColor_dark);
+    /* border: 2px solid var(--greyColor_dark); */
+    color: var(--greyColor_dark);
+    letter-spacing: 1px;
+    border-radius: 4px;
+    background-color: transparent;
+    transition: all 0.3s ease;
+}
+
+.modal_header button:hover {
+    background-color: var(--secondaryColor);
+    color: var(--greyColor_light);
+    outline: none;
+}
+
+.modal_footer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    padding-top: 20px;
+}
+
+.modal_footer___total_bill {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    width: 100%;
+    font-family: var(--fontBody);
+}
+
+.modal_footer___total_bill h3 {
+    color: var(--greyColor_dark);
+    font-family: var(--fontBody);
+    text-transform: uppercase;
+    font-size: calc(14px + 0.2vw);
+    padding-bottom: 15px;
+}
+
+.modal_footer___total_bill h4 {
+    font-size: calc(14px + 0.3vw);
+}
+
+.modal_footer a {
+    font-family: var(--fontBody);
+    letter-spacing: 1px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-align: center;
+    background-color: var(--buttonColor);
+    width: 100%;
+    font-weight: bold;
+    /* color: var(--greyColor_light); */
+    color: var(--primaryColor);
 }
 
 @media only screen and (max-width: 1000px) {
