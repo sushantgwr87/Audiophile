@@ -44,6 +44,7 @@ const Navbar = () => {
     }, [showSidebar]);
 
     return (
+        <>
         <header>
             <nav>
                 {isMd ?
@@ -100,9 +101,10 @@ const Navbar = () => {
                         <button onClick={handleModalNav}><Icon name="Cart" width={25} fill="#e0e0e0" className="icon_hover" /></button>
                     </>
                 }
-                <CartModal onClose={() => setModalShow(false)} show={modalShow} />
             </nav>
         </header>
+                <CartModal onClose={() => setModalShow(false)} show={modalShow} />
+        </>
     );
 };
 
