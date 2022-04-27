@@ -71,7 +71,7 @@ header {
   align-items: center;
   width: 100%;
   top: 0;
-  z-index: 99;
+  z-index: 1;
   padding: 20px 10vw;
 }
 
@@ -125,6 +125,33 @@ footer {
 .icon_hover:hover {
   background-color: var(--primaryColor);
   fill: #121212;
+}
+
+.counter_button {
+  position: relative;
+  display: flex;
+  font-weight: bold;
+  font-size: 18px;
+  font-family: var(--fontHead);
+  justify-content: space-around;
+  align-items: center;
+  background-color: var(--greyColor_light);
+}
+
+.counter_button span {
+  padding: 0 calc(10px + 0.5vw);
+  text-align: center;
+  flex: 1;
+}
+
+.counter_button button {
+  font-size: 20px;
+  padding: 10px calc(10px + 0.5vw);
+  flex: 1;
+}
+
+.counter_button button:hover {
+  background-color: var(--greyColor);
 }
 
 @media only screen and (max-width: 400px) {
