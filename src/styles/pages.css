@@ -614,10 +614,8 @@ p {
   position: relative;
   display: flex;
   justify-content: center;
-  /* align-items: center; */
   flex-direction: column;
   width: 50%;
-  /* height: 500px; */
 }
 
 .summary_details {
@@ -674,4 +672,69 @@ p {
   width: 100%;
   background-color: var(--buttonColor);
   color: var(--primaryColor);
+}
+
+.checkout_form {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  padding: 40px;
+}
+
+.checkout_form h2 {
+  text-transform: uppercase;
+  font-family: var(--fontHead);
+  font-size: calc(20px + 0.4vw);
+  color: var(--secondaryColor);
+  padding-bottom: 20px;
+}
+
+label {
+  position: relative;
+  display: block;
+  font-family: var(--fontHead);
+  color: var(--secondaryColor);
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: calc(12px + 0.2vw);
+  padding: 5px 0;
+}
+
+input {
+  display: block;
+  border: 1px solid var(--greyColor_dark);
+  padding: 5px 15px;
+  border-radius: 4px;
+  font-family: var(--fontBody);
+  font-size: calc(10px + 0.3vw);
+  color: var(--secondaryColor);
+  width: 100%;
+  /* font-weight: bold; */
+}
+
+.form___billing_details {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px 20px;
+}
+
+.checkout_form h4 {
+  font-family: var(--fontHead);
+  font-size: calc(16px + 0.2vw);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--buttonColor);
+  padding: 30px 0 10px;
+}
+
+.form_input___name, .form_input___email {
+  flex: 40%;
+  /* width: 100%; */
+}
+
+.form_input___phone {
+  flex: 100%;
 }
