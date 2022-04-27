@@ -3,6 +3,7 @@ import Footer from "./component/Footer";
 import Headphones from "./pages/Headphones";
 import Earphones from "./pages/Earphones";
 import Speakers from "./pages/Speakers";
+import Checkout from "./pages/Checkout";
 import Product from "./pages/Product";
 import Home from "./pages/Home";
 import ScrollToTop from "./component/ScrollToTop";
@@ -20,6 +21,7 @@ function App() {
             <Route path="/speakers" element={<Speakers />} />
             <Route path="/earphones" element={<Earphones />} />
             <Route path="/product/:category/:id" element={<Product />} />
+            <Route path="/checkout" element={<Checkout />} />
             {/* <Route component={NotFound} /> */}
           </Routes>
         </div>
