@@ -1,73 +1,117 @@
-import React from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import CheckoutCard from '../component/CheckoutCard';
 
 const Checkout = () => {
+
+  const [check, setCheck] = useState(true);
+
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    address: "",
+    zip: "",
+    city: "",
+    country: "",
+    paymentType: "e-Money"
+  })
+
+  const handleInputChange = (e) => {
+    setFormData({ ...formData, [e.target.id]: e.target.value })
+  }
+
+  const { name, email, phone, address, zip, city, country } = formData;
+
+  const handleRadioCheck = (e) => {
+    setCheck(!check);
+    formData.paymentType = e.target.value;
+  }
+
+  const handleFormSubmit = (e) => {
+    e.prevent.default();
+    console.log(formData);
+  }
+
   return (
     <div className='checkout_page'>
       <Link to={"/"}>Go Back</Link>
-      <div className="checkout_form">
-        <h2>Checkout</h2>
-        <form method="post">
-          <h4>Billing Details</h4>
-          <div className="form___billing_details">
-            <div className='form_input___name'>
-              <label htmlFor="name">Name</label>
-              <input type="text" name="name" id="name" />
+      <div className='checkout_grid_container'>
+        <div className="checkout_form">
+          <h2>Checkout</h2>
+          <form method="post" onSubmit={handleFormSubmit}>
+            <h4>Billing Details</h4>
+            <div className="form___billing_details">
+              <div className='form_input___name'>
+                <label htmlFor="name">Name</label>
+                <input required type="text" name="name" id="name" value={name} onChange={handleInputChange} />
+              </div>
+              <div className='form_input___email'>
+                <label htmlFor="email">Email Address</label>
+                <input required type="email" name='email' id='email' value={email} onChange={handleInputChange} />
+              </div>
+              <div className='form_input___phone'>
+                <label htmlFor="phone">Phone No.</label>
+                <input required type="number" name='phone' id='phone' value={phone} onChange={handleInputChange} />
+              </div>
             </div>
-            <div className='form_input___email'>
-              <label htmlFor="email">Email Address</label>
-              <input type="email" name='email' id='email' />
+            <h4>Shipping Details</h4>
+            <div className="form___shipping_details">
+              <div className='form_input___address'>
+                <label htmlFor="address">Address</label>
+                <input required type="text" name="address" id="address" value={address} onChange={handleInputChange} />
+              </div>
+              <div className='form_input___zip'>
+                <label htmlFor="zip">Zip Postel Code</label>
+                <input required type="number" name='zip' id='zip' value={zip} onChange={handleInputChange} />
+              </div>
+              <div className='form_input___city'>
+                <label htmlFor="city">City</label>
+                <input required type="text" name='city' id='city' value={city} onChange={handleInputChange} />
+              </div>
+              <div className='form_input___country'>
+                <label htmlFor="country">Country</label>
+                <input required type="text" name='country' id='country' value={country} onChange={handleInputChange} />
+              </div>
             </div>
-            <div className='form_input___phone'>
-              <label htmlFor="phone">Phone No.</label>
-              <input type="number" name='phone' id='phone' />
+            <h4>Payment Details</h4>
+            <div className="form___payment_details">
+              <h5>Payment Type</h5>
+              <label htmlFor="e-Money" className={`form___input_radio ${check && "input_radio___checked"}`}>
+                <input required defaultChecked type="radio" name="payment_type" value="e-Money" id="e-Money" onChange={handleRadioCheck} />
+                <label htmlFor="e-Money">e-Money</label>
+              </label>
+              <label htmlFor="cashOnDelivery" className={`form___input_radio ${!check && "input_radio___checked"}`}>
+                <input required type="radio" value="Cash on Delivery" name="payment_type" id="cashOnDelivery" onChange={handleRadioCheck} />
+                <label htmlFor="cashOnDelivery">Cash on Delivery</label>
+              </label>
+            </div>
+          </form>
+        </div>
+        <div className="checkout_summary">
+          <h2>Summary</h2>
+          <div className="summary_cards">
+            <CheckoutCard />
+            <CheckoutCard />
+            <CheckoutCard />
+          </div>
+          <div className="summary_details">
+            <div className="summary_headings">
+              <h3>Total</h3>
+              <h3>Shipping</h3>
+              <h3>Vat Included</h3>
+              <h3>Grand Total</h3>
+            </div>
+            <div className="summary_values">
+              <h3>&#8377; 2,999</h3>
+              <h3>&#8377; 50</h3>
+              <h3>&#8377; 1045</h3>
+              <h3>&#8377; 50090</h3>
             </div>
           </div>
-          <h4>Shipping Details</h4>
-          <div className="form___shipping_details">
-            <label htmlFor="address">Address</label>
-            <input type="text" name="address" id="address" />
-            <label htmlFor="zip">Zip Postel Code</label>
-            <input type="number" name='zip' id='zip' />
-            <label htmlFor="city">City</label>
-            <input type="text" name='city' id='city' />
-            <label htmlFor="country">Country</label>
-            <input type="text" name='country' id='country' />
-          </div>
-          <h4>Payment Details</h4>
-          <div className="form___payment_details">
-            <label htmlFor="payment_type">Payment Type</label>
-            <input required type="radio" name="payment_type" value="e-Money" id="payment_type" />
-            <label htmlFor="emoney">e-Money</label>
-            <input required type="radio" value="Cash on Delivery" name="payment_type" id="payment_type" />
-            <label htmlFor="cash">Cash on Delivery</label>
-          </div>
-        </form>
+          <button>Continue and Pay</button>
+        </div>
       </div>
-      {/* <div className="checkout_summary">
-        <h2>Summary</h2>
-        <div className="summary_cards">
-          <CheckoutCard />
-          <CheckoutCard />
-          <CheckoutCard />
-        </div>
-        <div className="summary_details">
-          <div className="summary_headings">
-            <h3>Total</h3>
-            <h3>Shipping</h3>
-            <h3>Vat Included</h3>
-            <h3>Grand Total</h3>
-          </div>
-          <div className="summary_values">
-            <h3>&#8377; 2,999</h3>
-            <h3>&#8377; 50</h3>
-            <h3>&#8377; 1045</h3>
-            <h3>&#8377; 50090</h3>
-          </div>
-        </div>
-        <button>Continue and Pay</button>
-      </div> */}
     </div>
   )
 }
