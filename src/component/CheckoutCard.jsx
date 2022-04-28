@@ -8,7 +8,7 @@ const CheckoutCard = ({ isModal = false }) => {
                 <img src="/assets/headphone_white2.png" alt="Product" />
             </div>
             <div className="checkout_product___details">
-                <h3>XII Headphone</h3>
+                <h3>XII</h3>
                 <p>&#8377; 2,999</p>
             </div>
             <div className="checkout_product___action">
