@@ -44,6 +44,8 @@
     width: 100%;
     padding: 20px 0;
     margin-right: auto;
+    text-transform: none;
+    font-size: calc(12px + 0.2vw);
 }
 
 .footer_outLinks {
