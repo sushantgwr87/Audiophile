@@ -19,7 +19,11 @@ const Card = ({
     const [countValue,setCountValue] = useState(1);
 
     const handleCounterValue = (value) => {
-        setCountValue(value)
+        setCountValue(value);
+    }
+
+    const handleCart = () => {
+        
     }
 
     console.log(countValue)
@@ -47,7 +51,7 @@ const Card = ({
                         {productPrice && <h4>&#8377; {productPrice.toLocaleString()}</h4>}
                         <div className={styles.card_product}>
                             <CounterButton handleCallback={handleCounterValue} />
-                            <button className={styles.card_btn}>
+                            <button className={styles.card_btn} onClick={handleCart}>
                                 Add To Cart
                             </button>
                         </div>
