@@ -46,11 +46,6 @@ const Card = ({
                     <>
                         {productPrice && <h4>&#8377; {productPrice.toLocaleString()}</h4>}
                         <div className={styles.card_product}>
-                            {/* <div className={styles.card_cart_counter}>
-                                <button onClick={handleDecrement}>-</button>
-                                <span>{count}</span>
-                                <button onClick={handleIncrement}>+</button>
-                            </div> */}
                             <CounterButton handleCallback={handleCounterValue} />
                             <button className={styles.card_btn}>
                                 Add To Cart
