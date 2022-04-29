@@ -3,6 +3,31 @@ import { Link } from "react-router-dom";
 import ReactDOM from "react-dom";
 import useMountTransition from "../customHook/useMountTransition";
 import styles from "../styles/modal.module.css";
+import CheckoutCard from "./CheckoutCard";
+
+const productData = [
+  {
+    path: "/assets/earphone_blue.png",
+    id: 200,
+    head: "XX99 II",
+    price: 2000,
+    quantity: 2
+  },
+  {
+    path: "/assets/earphone_green.png",
+    id: 201,
+    head: "XX99 I",
+    price: 3999,
+    quantity: 1
+  },
+  {
+    path: "/assets/earphone_aqua.png",
+    id: 202,
+    head: "X10",
+    price: 1999,
+    quantity: 2
+  },
+]
 
 const CartModal = ({ show, onClose }) => {
 
@@ -33,7 +58,18 @@ const CartModal = ({ show, onClose }) => {
         <h3>Cart - <span>2</span></h3>
         <button>Remove All</button>
       </div>
-      <div className={styles.modal_body}></div>
+      <div className={styles.modal_body}>
+        {productData.map((value, index) =>
+          <CheckoutCard
+            isModal
+            key={value.id}
+            imagePath={value.path}
+            productName={value.head}
+            productPrice={value.price}
+            productQuantity={value.quantity}
+          />
+        )}
+      </div>
       <div className={styles.modal_footer}>
         <div className={styles.modal_footer___total_bill}>
           <h3>Total</h3>
