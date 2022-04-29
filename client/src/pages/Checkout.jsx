@@ -2,6 +2,30 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import CheckoutCard from '../component/CheckoutCard';
 
+const productData = [
+  {
+    path: "/assets/earphone_blue.png",
+    id: 200,
+    head: "XX99 II",
+    price: 2000,
+    quantity: 2
+  },
+  {
+    path: "/assets/earphone_green.png",
+    id: 201,
+    head: "XX99 I",
+    price: 3999,
+    quantity: 1
+  },
+  {
+    path: "/assets/earphone_aqua.png",
+    id: 202,
+    head: "X10",
+    price: 1999,
+    quantity: 2
+  },
+]
+
 const Checkout = () => {
 
   const [check, setCheck] = useState(true);
@@ -91,9 +115,15 @@ const Checkout = () => {
         <div className="checkout_summary">
           <h2>Summary</h2>
           <div className="summary_cards">
-            <CheckoutCard />
-            <CheckoutCard />
-            <CheckoutCard />
+            {productData.map((value, index) =>
+              <CheckoutCard
+                key={value.id}
+                imagePath={value.path}
+                productName={value.head}
+                productPrice={value.price}
+                productQuantity={value.quantity}
+              />
+            )}
           </div>
           <div className="summary_details">
             <div className="summary_headings">
