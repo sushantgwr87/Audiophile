@@ -6,7 +6,7 @@
     border-radius: 10px;
     padding: 30px;
     text-transform: uppercase;
-    transform: translateY(100vw);
+    transform: translateY(-100vw);
     opacity: 0;
     z-index: 10;
 }
@@ -33,7 +33,7 @@
 }
 
 .modal.modal_hide {
-    transform: translateY(100vw);
+    transform: translateY(-100vw);
     opacity: 0;
     transition: all 0.4s ease-in-out;
 }
