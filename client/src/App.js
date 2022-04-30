@@ -9,6 +9,7 @@ import Home from "./pages/Home";
 import ScrollToTop from "./component/ScrollToTop";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import NotFound from "./pages/NotFound";
+import Admin from "./pages/Admin";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
             <Route path="/earphones" element={<Earphones />} />
             <Route path="/product/:category/:id" element={<Product />} />
             <Route path="/checkout" element={<Checkout />} />
+            <Route path="/admin" element={<Admin />} />
           </Routes>
         </div>
       </ScrollToTop>
