@@ -24,7 +24,7 @@ const Home = () => {
     <>
       <div className='featured_card'>
         <div className='featured_card___photo'>
-          <img src={'/assets/headphone_crop3.jpg'} alt='CardImage' />
+          <img src={'/assets/headphone_crop.png'} alt='CardImage' />
         </div>
         <div className='featured_card___content'>
           <h5>New Product</h5>
@@ -72,7 +72,7 @@ const Home = () => {
         </div>
         <div className="featured_product___card">
           <div className="featured_product___image">
-            <img src="/assets/earphone.jpg" alt="product" />
+            <img src="/assets/earphone.png" alt="product" />
           </div>
           <div className='featured_product___content'>
             <h3>YX1 Earphones</h3>
@@ -82,7 +82,7 @@ const Home = () => {
       </div>
       <div className='advertisement_card'>
         <div className='advertisement_card___photo'>
-          <img src={'/assets/headphone_wearing_person.jpg'} alt='CardImage' />
+          <img src={'/assets/headphone_wearing_person.png'} alt='CardImage' />
         </div>
         <div className='advertisement_card___content'>
           <h3>Bringing you the <span>best</span> audio gear</h3>
