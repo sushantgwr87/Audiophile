@@ -4,6 +4,7 @@ import Cart from "./Cart";
 import Github from "./GithubLogo";
 import Linkedin from "./LinkedinLogo";
 import Portfolio from "./PortfolioLogo";
+import NotFound from "./NotFound";
 
 const Icon = props => {
   switch (props.name) {
@@ -19,6 +20,8 @@ const Icon = props => {
       return <Linkedin {...props} />;
     case "portfolio":
       return <Portfolio {...props} />;
+    case "notFound":
+      return <NotFound {...props} />;
     default:
       return;
   }
