@@ -11,11 +11,13 @@ const dbo = require("../db/connector");
 // This help convert the id from string to ObjectId for the _id.
 const ObjectId = require("mongodb").ObjectId;
 
-const collectionName = "products";
+// const collectionName = "products";
 
 // This section will help you get a list of all the records.
-productRoutes.route("/product").get(function (req, res) {
+productRoutes.route("/product/:category").get(function (req, res) {
     let db_connect = dbo.getDb("audiophile");
+    let collectionName = req.params.category;
+    console.log(collectionName)
     db_connect
         .collection(collectionName)
         .find({})
@@ -26,8 +28,9 @@ productRoutes.route("/product").get(function (req, res) {
 });
 
 // This section will help you get a single record by id
-productRoutes.route("/product/:id").get(function (req, res) {
+productRoutes.route("/product/:category/:id").get(function (req, res) {
     let db_connect = dbo.getDb();
+    let collectionName = req.params.category;
     let myquery = { _id: ObjectId(req.params.id) };
     db_connect
         .collection(collectionName)
