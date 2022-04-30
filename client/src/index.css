@@ -158,3 +158,33 @@ footer {
     padding: 20px 10px;
   }
 }
+
+.notFound {
+  position: relative;
+  display: block;
+  background-color: var(--buttonColor);
+  text-align: center;
+  text-transform: uppercase;
+  padding-top: 50px;
+  width: 100%;
+  height: 100vh;
+}
+
+.notFound h3 {
+  position: relative;
+  display: block;
+  margin-top: -130px;
+  font-family: var(--fontHead);
+  font-size: calc(22px + 1.5vw);
+  color: var(--greyColor_light);
+}
+
+.notFound a {
+  margin-top: 30px;
+  padding: 10px 20px;
+  font-size: calc(16px + 0.4vw);
+  font-family: var(--fontBody);
+  color: var(--greyColor_light);
+  border-radius: 5px;
+  background-color: var(--secondaryColor);
+}
