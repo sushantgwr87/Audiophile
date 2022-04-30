@@ -8,6 +8,7 @@ import Product from "./pages/Product";
 import Home from "./pages/Home";
 import ScrollToTop from "./component/ScrollToTop";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
@@ -16,13 +17,13 @@ function App() {
       <ScrollToTop>
         <div className="container">
           <Routes>
+            <Route path='*' element={<NotFound />} />
             <Route path="/" element={<Home />} />
             <Route path="/headphones" element={<Headphones />} />
             <Route path="/speakers" element={<Speakers />} />
             <Route path="/earphones" element={<Earphones />} />
             <Route path="/product/:category/:id" element={<Product />} />
             <Route path="/checkout" element={<Checkout />} />
-            {/* <Route component={NotFound} /> */}
           </Routes>
         </div>
       </ScrollToTop>
