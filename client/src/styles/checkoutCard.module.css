@@ -16,7 +16,7 @@
     border-radius: 5px;
     width: 100%;
     height: 100%;
-    flex: 10%;
+    flex: 5%;
   }
   
   .checkout_product___image img {
@@ -28,12 +28,13 @@
   
   .checkout_product___details {
     width: 100%;
-    flex: 80%;
+    flex: 90%;
   }
   
   .checkout_product___action {
     width: 100%;
-    flex: 10%;
+    flex: 5%;
+    margin-left: auto;
   }
   
   .checkout_product___details,
