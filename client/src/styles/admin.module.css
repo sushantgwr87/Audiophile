@@ -1,0 +1,60 @@
+.admin_auth {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 10vw;
+    gap: 50px;
+}
+
+.admin_auth h2 {
+    color: var(--secondaryColor);
+    font-size: calc(22px + 1.5vw);
+    font-family: var(--fontHead);
+}
+
+.admin_form___auth {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
+}
+
+.admin_form___auth label {
+    font-size: calc(18px + 0.5vw);
+    font-family: var(--fontHead);
+}
+
+.admin_form___auth input {
+    margin: 5px 0 20px;
+    width: 100%;
+}
+
+.admin_form___auth button {
+    background-color: var(--buttonColor);
+    padding: 15px 20px;
+    width: 100%;
+    color: var(--greyColor_light);
+    border-radius: 5px;
+    font-size: calc(16px + 0.3vw);
+    text-transform: uppercase;
+    margin-top: 20px;
+    letter-spacing: 2px;
+    font-family: var(--fontBody);
+    transition: all 0.3s ease;
+}
+
+.admin_form___auth button:hover {
+    background-color: var(--secondaryColor);
+}
+
+@media only screen and (max-width: 900px) {
+    .admin_auth {
+        padding: 50px;
+    }
+    .admin_form___auth {
+        width: 100%;
+    }
+}
