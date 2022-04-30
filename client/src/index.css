@@ -106,7 +106,7 @@ footer {
   position: relative;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  min-height: 90vh;
   padding-top: 80px;
   /* padding: 80px 0; */
 }
@@ -130,7 +130,7 @@ footer {
   position: relative;
   display: flex;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 14px;
   font-family: var(--fontHead);
   justify-content: space-around;
   align-items: center;
@@ -138,7 +138,7 @@ footer {
 }
 
 .counter_button span {
-  padding: 0 calc(10px + 0.5vw);
+  padding: 0 calc(10px + 0.2vw);
   text-align: center;
   flex: 1;
 }
