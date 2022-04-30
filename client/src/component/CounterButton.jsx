@@ -8,11 +8,11 @@ const CounterButton = ({handleCallback}) => {
         if (count === 0)
             return;
         setCount(count - 1);
-        handleCallback(count-1)
+        // handleCallback(count-1)
     }
     const handleIncrement = () => {
         setCount(count + 1);
-        handleCallback(count+1)
+        // handleCallback(count+1)
     }
 
     return (
