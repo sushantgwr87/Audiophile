@@ -106,7 +106,7 @@ footer {
   position: relative;
   display: flex;
   flex-direction: column;
-  min-height: 90vh;
+  min-height: 100vh;
   padding-top: 80px;
   /* padding: 80px 0; */
 }
