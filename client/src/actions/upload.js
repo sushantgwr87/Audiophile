@@ -1,12 +1,20 @@
-export async function imageUpload({image}) {
-    const body = new FormData();
-    body.append("image", image);
+import domainurl from "../domainAPI";
 
-    const response = await fetch("/api/upload", {
-      method: "POST",
-      body
-    });
-    const imageData = await response.json();
+export async function imageUpload(image) {
+  const body = new FormData();
+  console.log(image);
+  body.append("image", image);
+  console.table([...body]);
+  const res = await domainurl.post("image/upload", {
+    method: "POST",
+    body,
+    headers: {
+      "Content-Type": "multipart/form-data"
+    }
+  });
 
-    return imageData;
+  console.log(res.data);
+  // const imageData = await response.json();
+
+  // return imageData;
 }
