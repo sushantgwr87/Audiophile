@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import AdminAuth from '../component/AdminAuth';
-import styles from '../styles/admin.module.css';
+import { imageUpload } from '../actions/upload';
 
 const Admin = () => {
 
@@ -28,6 +28,13 @@ const Admin = () => {
         }
     };
 
+    const handleOnSubmit = (e) => {
+        e.preventDefault();
+        console.log(image)
+        const imageData = imageUpload(image);
+        console.log(imageData);
+    }
+
     console.log(formData)
 
     const auth = true;
@@ -36,7 +43,7 @@ const Admin = () => {
         <div className='admin_page'>
             {auth ? <div className="admin_page_form">
                 <h2>Add New Story</h2>
-                <form method='post'>
+                <form method='post' onSubmit={handleOnSubmit}>
                     <div className="upload_form_image">
                         <label htmlFor="imgUpload">
                             <div className="upload_image">
