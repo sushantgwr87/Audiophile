@@ -94,57 +94,18 @@ var upload = multer({ storage: storage });
 
 productRoutes.post('/image/upload', upload.single('productImage'), function (req, res) {
     console.log(req.file)
-    res.json({
-        message: true,
-        path: req.file.path
-    })
+    if (!req.file) {
+        console.log("No file received");
+        res.json({
+            message: false,
+        })
+    }
+    else {
+        res.json({
+            message: true,
+            path: req.file.filename
+        })
+    }
 })
-
-
-// productRoutes.route("/image/upload").post((req, res) => {
-
-//     const unique_id = uuidv4();
-
-//     var name = "image_" + unique_id + ".png";
-//     var storage = multer.diskStorage({
-//         destination: function (req, file, cb) {
-//             cb(null, `../public`);
-//         },
-//         filename: function (req, file, cb) {
-//             cb(null, name);
-//         }
-//     });
-
-//     var upload = multer({ storage: storage }).single('file');
-//     upload(req, res, error => {
-//         console.log(req.file);
-//         if (error) {
-//             console.log(error);
-//             return res.json(error);
-//         }
-//         res.json({
-//             message: true,
-//             path: name
-//         })
-//     })
-// });
-
-// if (req.files === null) {
-//     return res.status(400).json({ msg: 'No file uploaded' });
-// }
-
-// console.log(req.body);
-// console.log(req.body.file);
-// const file = req.files.file;
-// // console.log(file);
-
-// file.mv(`${__dirname}/client/public/assets/image_${unique_id}.png`, err => {
-//     if (err) {
-//         console.error(err);
-//         return res.status(500).send(err);
-//     }
-
-//     res.status(200).json({ uploaded: true, filePath: `/assets/image_${unique_id}.png` });
-// });
 
 module.exports = productRoutes;
