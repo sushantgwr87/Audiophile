@@ -1,6 +1,7 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import Card from '../component/Card';
+import ProductCarousel from '../component/ProductCarousel';
 
 const product = {
     path: "/assets/headphone_side.png",
@@ -8,24 +9,6 @@ const product = {
     head: "XX99 Mark II Headphones",
     body: "Experience natural, lifelike audio and exceptional build quality made for the passionate music enthusiast.",
 }
-
-const productData = [
-    {
-        path: "/assets/headphone_white2.png",
-        head: "Headphones",
-        link: "/headphones"
-    },
-    {
-        path: "/assets/earpods_purple2.png",
-        head: "Earphones",
-        link: "/earphones"
-    },
-    {
-        path: "/assets/speaker_top2.png",
-        head: "Speakers",
-        link: "/speakers"
-    },
-]
 
 const Product = () => {
 
@@ -66,21 +49,7 @@ const Product = () => {
                 <img src={`/assets/${category}/image2.png`} alt="Product" />
                 <img src={`/assets/${category}/image3.png`} alt="Product" />
             </div>
-            <div className="product_carousel">
-                {productData.map((value, index) =>
-                    <div className='product_carousel___item' key={index}>
-                        <div className="carousel_image">
-                            <img src={value.path} alt="product" />
-                        </div>
-                        <div className="carousel_content">
-                            <h4>{value.head}</h4>
-                            <Link to={value.link}>
-                                Shop
-                            </Link>
-                        </div>
-                    </div>
-                )}
-            </div>
+            <ProductCarousel />
         </div>
     )
 }
