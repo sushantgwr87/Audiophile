@@ -79,67 +79,72 @@ productRoutes.route("/:id").delete((req, response) => {
     });
 });
 
-// const uploadImage = (unique_id) => {
+// var name;
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, 'public');
+    },
+    filename: function (req, file, cb) {
+        const unique_id = uuidv4();
+        let name = "image_" + unique_id + ".png";
+        cb(null, name);
+    }
+});
+var upload = multer({ storage: storage });
+
+productRoutes.post('/image/upload', upload.single('productImage'), function (req, res) {
+    console.log(req.file)
+    res.json({
+        message: true,
+        path: req.file.path
+    })
+})
+
+
+// productRoutes.route("/image/upload").post((req, res) => {
+
+//     const unique_id = uuidv4();
 
 //     var name = "image_" + unique_id + ".png";
 //     var storage = multer.diskStorage({
-//         destination: function (req, res, next) {
-//             next(null, `../public`);
+//         destination: function (req, file, cb) {
+//             cb(null, `../public`);
 //         },
-//         filename: function (req, file, next) {
-//             // path = `image_${unique_id}.png`;
-//             next(null, name);
+//         filename: function (req, file, cb) {
+//             cb(null, name);
 //         }
 //     });
-//     var upload = multer({ storage: storage });
 
-//     return upload;
+//     var upload = multer({ storage: storage }).single('file');
+//     upload(req, res, error => {
+//         console.log(req.file);
+//         if (error) {
+//             console.log(error);
+//             return res.json(error);
+//         }
+//         res.json({
+//             message: true,
+//             path: name
+//         })
+//     })
+// });
+
+// if (req.files === null) {
+//     return res.status(400).json({ msg: 'No file uploaded' });
 // }
 
-productRoutes.route("/image/upload").post((req, res) => {
+// console.log(req.body);
+// console.log(req.body.file);
+// const file = req.files.file;
+// // console.log(file);
 
-    const unique_id = uuidv4();
+// file.mv(`${__dirname}/client/public/assets/image_${unique_id}.png`, err => {
+//     if (err) {
+//         console.error(err);
+//         return res.status(500).send(err);
+//     }
 
-    var name = "image_" + unique_id + ".png";
-    console.log(__dirname);
-    var storage = multer.diskStorage({
-        destination: function (req, res, next) {
-            next(null, `../public`);
-        },
-        filename: function (req, file, next) {
-            next(null, name);
-        }
-    });
-
-    var upload = multer({ storage: storage }).single('file');
-    upload(req, res, error => {
-        if (error) {
-            console.log(error);
-            return res.json(error);
-        }
-        res.json({
-            message: true,
-            path: name
-        })
-    })
-
-    // if (req.files === null) {
-    //     return res.status(400).json({ msg: 'No file uploaded' });
-    // }
-
-    // console.log(req.body);
-    // console.log(req.body.file);
-    // const file = req.files.file;
-    // // console.log(file);
-
-    // file.mv(`${__dirname}/client/public/assets/image_${unique_id}.png`, err => {
-    //     if (err) {
-    //         console.error(err);
-    //         return res.status(500).send(err);
-    //     }
-
-    //     res.status(200).json({ uploaded: true, filePath: `/assets/image_${unique_id}.png` });
-    // });
-});
+//     res.status(200).json({ uploaded: true, filePath: `/assets/image_${unique_id}.png` });
+// });
 
 module.exports = productRoutes;
