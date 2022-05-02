@@ -1,29 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
-const productData = [
-  {
-    path: "/assets/headphone_white2.png",
-    head: "Headphones",
-    link: "/headphones"
-  },
-  {
-    path: "/assets/earpods_purple2.png",
-    head: "Earphones",
-    link: "/earphones"
-  },
-  {
-    path: "/assets/speaker_top2.png",
-    head: "Speakers",
-    link: "/speakers"
-  },
-]
+import ProductCarousel from '../component/ProductCarousel';
 
 const Home = () => {
+
   return (
     <>
       <div className='featured_card'>
         <div className='featured_card___photo'>
+          {/* <img src={process.env.REACT_APP_PUBLIC_API_URL+'/assets/headphone_crop.png'} alt='CardImage' /> */}
           <img src={'/assets/headphone_crop.png'} alt='CardImage' />
         </div>
         <div className='featured_card___content'>
@@ -35,21 +20,7 @@ const Home = () => {
           </Link>
         </div>
       </div>
-      <div className="product_carousel">
-        {productData.map((value, index) =>
-          <div className='product_carousel___item' key={index}>
-            <div className="carousel_image">
-              <img src={value.path} alt="product" />
-            </div>
-            <div className="carousel_content">
-              <h4>{value.head}</h4>
-              <Link to={value.link}>
-                Shop
-              </Link>
-            </div>
-          </div>
-        )}
-      </div>
+      <ProductCarousel />
       <div className="featured_product___card_list">
         <div className="featured_product___card">
           <div className="featured_product___image">
