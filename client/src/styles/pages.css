@@ -802,7 +802,16 @@ input:not([type="radio"]) {
   margin: auto;
 }
 
+.upload_image {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+
 .upload_image img {
+  object-fit: cover;
+  height: 200px;
+  display: block;
   cursor: pointer;
 }
 
