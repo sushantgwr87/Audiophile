@@ -1,5 +1,7 @@
 const express = require("express");
 
+const { v4: uuidv4 } = require('uuid');
+const multer = require('multer');
 // productRoutes is an instance of the express router.
 // We use it to define our routes.
 // The router will be added as a middleware and will take control of requests starting with path /record.
@@ -7,7 +9,6 @@ const productRoutes = express.Router();
 
 // This will help us connect to the database
 const dbo = require("../db/connector");
-
 // This help convert the id from string to ObjectId for the _id.
 const ObjectId = require("mongodb").ObjectId;
 
@@ -76,6 +77,69 @@ productRoutes.route("/:id").delete((req, response) => {
         console.log("1 document deleted");
         response.json(obj);
     });
+});
+
+// const uploadImage = (unique_id) => {
+
+//     var name = "image_" + unique_id + ".png";
+//     var storage = multer.diskStorage({
+//         destination: function (req, res, next) {
+//             next(null, `../public`);
+//         },
+//         filename: function (req, file, next) {
+//             // path = `image_${unique_id}.png`;
+//             next(null, name);
+//         }
+//     });
+//     var upload = multer({ storage: storage });
+
+//     return upload;
+// }
+
+productRoutes.route("/image/upload").post((req, res) => {
+
+    const unique_id = uuidv4();
+
+    var name = "image_" + unique_id + ".png";
+    console.log(__dirname);
+    var storage = multer.diskStorage({
+        destination: function (req, res, next) {
+            next(null, `../public`);
+        },
+        filename: function (req, file, next) {
+            next(null, name);
+        }
+    });
+
+    var upload = multer({ storage: storage }).single('file');
+    upload(req, res, error => {
+        if (error) {
+            console.log(error);
+            return res.json(error);
+        }
+        res.json({
+            message: true,
+            path: name
+        })
+    })
+
+    // if (req.files === null) {
+    //     return res.status(400).json({ msg: 'No file uploaded' });
+    // }
+
+    // console.log(req.body);
+    // console.log(req.body.file);
+    // const file = req.files.file;
+    // // console.log(file);
+
+    // file.mv(`${__dirname}/client/public/assets/image_${unique_id}.png`, err => {
+    //     if (err) {
+    //         console.error(err);
+    //         return res.status(500).send(err);
+    //     }
+
+    //     res.status(200).json({ uploaded: true, filePath: `/assets/image_${unique_id}.png` });
+    // });
 });
 
 module.exports = productRoutes;
