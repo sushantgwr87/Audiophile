@@ -1,17 +1,13 @@
 import domainurl from "../domainAPI";
 
 export async function imageUpload(image) {
-  const body = new FormData();
+  const formData = new FormData();
   console.log(image);
-  body.append("image", image);
-  console.table([...body]);
-  const res = await domainurl.post("image/upload", {
-    method: "POST",
-    body,
-    headers: {
-      "Content-Type": "multipart/form-data"
-    }
-  });
+
+  formData.append('productImage', image);
+  console.table([...formData]);
+  
+  const res = await domainurl.post("image/upload", formData);
 
   console.log(res.data);
   // const imageData = await response.json();
