@@ -30,12 +30,9 @@ const Admin = () => {
 
     const handleOnSubmit = (e) => {
         e.preventDefault();
-        // console.log(image)
         imageUpload(image);
-        // console.log(imageData);
+        console.log(formData)
     }
-
-    console.log(formData)
 
     const auth = true;
 
