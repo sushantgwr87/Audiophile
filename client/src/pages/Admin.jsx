@@ -30,9 +30,9 @@ const Admin = () => {
 
     const handleOnSubmit = (e) => {
         e.preventDefault();
-        console.log(image)
-        const imageData = imageUpload(image);
-        console.log(imageData);
+        // console.log(image)
+        imageUpload(image);
+        // console.log(imageData);
     }
 
     console.log(formData)
@@ -52,8 +52,8 @@ const Admin = () => {
                         </label>
                         <input
                             type="file"
-                            id="imgUpload"
-                            name="storyImage"
+                            id="productImage"
+                            name="productImage"
                             onChange={handleImage}
                             accept=".png, .jpg, .jpeg"
                             hidden
