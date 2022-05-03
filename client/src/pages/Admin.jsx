@@ -13,9 +13,12 @@ const Admin = () => {
         price: 1000,
         body: "",
         feature: false,
+        category: "headphones",
     });
 
-    const { title, price, body, quote } = formData;
+    const { title, price, body, quote, category } = formData;
+
+    console.log(category);
 
     const onChange = (e) =>
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -68,6 +71,12 @@ const Admin = () => {
                             onChange={(e) => onChange(e)}
                             required
                         />
+                        <label htmlFor="category">Category</label>
+                        <select name='category' id='category' value={category} onChange={(e) => onChange(e)}>
+                            <option value="headphones">Headphones</option>
+                            <option value="speakers">Speakers</option>
+                            <option value="earphones">Earphones</option>
+                        </select>
                         <label htmlFor="quote">quote</label>
                         <input
                             className="upload_content___input"
