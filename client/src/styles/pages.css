@@ -755,7 +755,9 @@ input:not([type="radio"]) {
     gap: 20px;
     align-items: center;
   }
-  .checkout_form, .checkout_summary {
+
+  .checkout_form,
+  .checkout_summary {
     border-radius: 5px;
   }
 }
@@ -770,7 +772,9 @@ input:not([type="radio"]) {
     padding: 40px 20px;
   }
 
-  .form___billing_details>div,.form___shipping_details>div,.form___input_radio {
+  .form___billing_details>div,
+  .form___shipping_details>div,
+  .form___input_radio {
     flex: 100%;
     width: 100%;
   }
@@ -820,6 +824,23 @@ input:not([type="radio"]) {
   padding: 20px 0 10px;
   font-family: var(--fontBody);
   font-size: calc(14px + 0.2vw);
+}
+
+.upload_content select {
+  display: block;
+  padding: 10px;
+  font-size: calc(10px + 0.2vw);
+  font-family: var(--fontBody);
+  text-transform: uppercase;
+  font-weight: bold;
+  background-color: transparent;
+  color: var(--secondaryColor);
+  border: 2px solid var(--greyColor);
+  border-radius: 3px;
+}
+
+.upload_content select > option {
+  border-radius: 0;
 }
 
 .upload_content___input {
