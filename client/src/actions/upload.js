@@ -9,8 +9,8 @@ export async function imageUpload(image) {
   
   const res = await domainurl.post("image/upload", formData);
 
-  console.log(res.data);
-  // const imageData = await response.json();
+  console.log(res.data)
+  // const imageData = res.json();
 
   // return imageData;
 }
