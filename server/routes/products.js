@@ -79,6 +79,12 @@ productRoutes.route("/:id").delete((req, response) => {
     });
 });
 
+// Admin auth
+productRoutes.post("/admin/auth", (req, res) => {
+    const username = req.body.user;
+    const password = req.body.password;
+});
+
 // var name;
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
