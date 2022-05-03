@@ -839,10 +839,6 @@ input:not([type="radio"]) {
   border-radius: 3px;
 }
 
-.upload_content select > option {
-  border-radius: 0;
-}
-
 .upload_content___input {
   display: block;
 }
