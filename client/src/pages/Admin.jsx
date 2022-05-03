@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import AdminAuth from '../component/AdminAuth';
-import { imageUpload } from '../actions/upload';
+import { imageUpload, productUpload } from '../actions/upload';
 
 const Admin = () => {
 
@@ -11,14 +11,12 @@ const Admin = () => {
         title: "",
         quote: "",
         price: 1000,
-        body: "",
+        description: "",
         feature: false,
         category: "headphones",
     });
 
-    const { title, price, body, quote, category } = formData;
-
-    console.log(category);
+    const { title, price, description, quote, category } = formData;
 
     const onChange = (e) =>
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -31,9 +29,18 @@ const Admin = () => {
         }
     };
 
-    const handleOnSubmit = (e) => {
+    const handleOnSubmit = async (e) => {
         e.preventDefault();
-        imageUpload(image);
+        const imageResult = await imageUpload(image)
+        console.log(imageResult);
+        if (imageResult.message) {
+            let productData = {
+                ...formData,
+                path: imageResult.path,
+            }
+            console.log(productData);
+            productUpload(productData);
+        }
         console.log(formData)
     }
 
@@ -45,7 +52,7 @@ const Admin = () => {
                 <h2>Add New Story</h2>
                 <form method='post' onSubmit={handleOnSubmit}>
                     <div className="upload_form_image">
-                        <label htmlFor="imgUpload">
+                        <label htmlFor="productImage">
                             <div className="upload_image">
                                 <img src={createObjectURL} alt="upload_Image" />
                             </div>
@@ -87,14 +94,14 @@ const Admin = () => {
                             value={quote}
                             onChange={(e) => onChange(e)}
                         />
-                        <label htmlFor="body">Body</label>
+                        <label htmlFor="description">description</label>
                         <textarea
                             className="upload_content___input"
-                            name="body"
-                            id="body"
-                            placeholder="Enter Body"
+                            name="description"
+                            id="description"
+                            placeholder="Enter description"
                             rows="10"
-                            value={body}
+                            value={description}
                             onChange={(e) => onChange(e)}
                             required
                         />
