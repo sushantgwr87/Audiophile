@@ -12,16 +12,15 @@ const dbo = require("../db/connector");
 // This help convert the id from string to ObjectId for the _id.
 const ObjectId = require("mongodb").ObjectId;
 
-// const collectionName = "products";
+const collectionName = "products";
 
 // This section will help you get a list of all the records.
 productRoutes.route("/product/:category").get(function (req, res) {
     let db_connect = dbo.getDb("audiophile");
-    let collectionName = req.params.category;
     console.log(collectionName)
     db_connect
         .collection(collectionName)
-        .find({})
+        .find({"category":req.params.category})
         .toArray(function (err, result) {
             if (err) throw err;
             res.json(result);
@@ -35,25 +34,12 @@ productRoutes.route("/product/:category/:id").get(function (req, res) {
     let myquery = { _id: ObjectId(req.params.id) };
     db_connect
         .collection(collectionName)
-        .findOne(myquery, function (err, result) {
+        .findOne({"category":req.params.category},myquery, function (err, result) {
             if (err) throw err;
             res.json(result);
         });
 });
 
-// This section will help you create a new record.
-productRoutes.route("/product/add").post(function (req, response) {
-    let db_connect = dbo.getDb();
-    let myobj = {
-        name: req.body.name,
-        position: req.body.position,
-        level: req.body.level,
-    };
-    db_connect.collection(collectionName).insertOne(myobj, function (err, res) {
-        if (err) throw err;
-        response.json(res);
-    });
-});
 
 // This section will help you update a record by id.
 productRoutes.route("/update/:id").post(function (req, response) {
@@ -83,6 +69,34 @@ productRoutes.route("/:id").delete((req, response) => {
 productRoutes.post("/admin/auth", (req, res) => {
     const username = req.body.user;
     const password = req.body.password;
+});
+
+// This section will help you create a new record.
+productRoutes.post("/product/add", function (req, response) {
+    let db_connect = dbo.getDb();
+    let myobj = {
+        title: req.body.title,
+        longTitle: req.body.title + req.body.category,
+        quote: req.body.quote || null,
+        description: req.body.description,
+        price: req.body.price,
+        path: req.body.path,
+        feature: req.body.feature,
+        category: req.body.category,
+    };
+    db_connect.collection(collectionName).insertOne(myobj, function (err, res) {
+        if (err) {
+            response.json({
+                status: false,
+            })
+            throw err;
+        }
+        else {
+            response.json({
+                status: true,
+            })
+        }
+    });
 });
 
 // var name;
