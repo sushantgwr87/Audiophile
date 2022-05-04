@@ -1,5 +1,7 @@
+import domainurl from "../domainAPI";
+
 export async function getCategoryProducts(category) {
-    const response = await fetch(`http://localhost:5000/products/`, { params: { category } });
+    const response = await domainurl.get(`product/`, { params: { category } });
 
     if (!response.ok) {
         const message = `An error occurred: ${response.statusText}`;
@@ -12,8 +14,8 @@ export async function getCategoryProducts(category) {
     console.log(productData);
 }
 
-export async function getProduct(category, id) {
-    const response = await fetch(`http://localhost:5000/products`, { params: { category, id } });
+export async function getFeaturedProducts() {
+    const response = await domainurl.get(`product/featured`);
 
     if (!response.ok) {
         const message = `An error occurred: ${response.statusText}`;
@@ -26,8 +28,8 @@ export async function getProduct(category, id) {
     console.log(productData);
 }
 
-export async function addProduct(category, id) {
-    const response = await fetch(`http://localhost:5000/products`, { params: { category, id } });
+export async function getProduct(id) {
+    const response = await domainurl.get(`product/`, { params: { id } });
 
     if (!response.ok) {
         const message = `An error occurred: ${response.statusText}`;
