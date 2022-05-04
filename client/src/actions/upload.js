@@ -1,4 +1,5 @@
 import domainurl from "../domainAPI";
+import { toast } from "react-toastify";
 
 export async function imageUpload(image) {
   const formData = new FormData();
@@ -11,6 +12,7 @@ export async function imageUpload(image) {
 
   console.log(res.data)
 
+  toast.success("Image Uploaded Successfully");
   return res.data;
 }
 
@@ -22,8 +24,6 @@ export async function productUpload(formData) {
   
   const res = await domainurl.post("product/add",body);
 
-  console.log(res.data)
-  // const imageData = res.json();
-
-  // return imageData;
+  if(res.data.message)
+    toast.success("Product Data Uploaded Successfully");
 }
