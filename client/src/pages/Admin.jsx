@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import AdminAuth from '../component/AdminAuth';
 import { imageUpload, productUpload } from '../actions/upload';
 
@@ -81,7 +81,7 @@ const Admin = () => {
                         <label htmlFor="category">Category</label>
                         <select name='category' id='category' value={category} onChange={(e) => onChange(e)}>
                             <option value="headphones">Headphones</option>
-                            <option value="speakers">Speakers</option>
+                            <option value="speaker">Speaker</option>
                             <option value="earphones">Earphones</option>
                         </select>
                         <label htmlFor="quote">quote</label>
