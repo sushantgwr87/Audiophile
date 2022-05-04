@@ -9,6 +9,7 @@ const router = express.Router();
 
 // This will help us connect to the database
 const dbo = require("../db/connector");
+const productSchema = require("../model/productSchema");
 // This help convert the id from string to ObjectId for the _id.
 const ObjectId = require("mongodb").ObjectId;
 
@@ -19,7 +20,7 @@ router.route("/product/:category").get(function (req, res) {
     let db_connect = dbo.getDb("audiophile");
     db_connect
         .collection(collectionName)
-        .find({"category":req.params.category})
+        .find({ "category": req.params.category })
         .toArray(function (err, result) {
             if (err) throw err;
             res.json(result);
@@ -30,7 +31,7 @@ router.route("/product/featured").get(function (req, res) {
     let db_connect = dbo.getDb("audiophile");
     db_connect
         .collection(collectionName)
-        .find({isFeatured: {$ne: false}})
+        .find({ isFeatured: { $ne: false } })
         .toArray(function (err, result) {
             if (err) throw err;
             res.json(result);
@@ -84,29 +85,40 @@ router.post("/admin/auth", (req, res) => {
 // This section will help you create a new record.
 router.post("/product/add", function (req, response) {
     let db_connect = dbo.getDb();
-    let myobj = {
+    const productData = new productSchema({
         title: req.body.title,
-        longTitle: req.body.title + req.body.category,
+        longTitle: req.body.title + " " + req.body.category,
         quote: req.body.quote || null,
         description: req.body.description,
         price: req.body.price,
         path: req.body.path,
         isFeatured: req.body.feature,
         category: req.body.category,
-    };
-    db_connect.collection(collectionName).insertOne(myobj, function (err, res) {
-        if (err) {
-            response.json({
-                status: false,
-            })
-            throw err;
-        }
-        else {
-            response.json({
-                status: true,
-            })
-        }
     });
+    productData.save().then(
+        response.json({
+            status: true,
+        })
+    ).catch((error) => {
+        console.log(error)
+        response.json({
+            status: false,
+        })
+    }
+    )
+    // db_connect.collection(collectionName).insertOne(myobj, function (err, res) {
+    //     if (err) {
+    //         response.json({
+    //             status: false,
+    //         })
+    //         throw err;
+    //     }
+    //     else {
+    //         response.json({
+    //             status: true,
+    //         })
+    //     }
+    // });
 });
 
 // var name;
