@@ -17,7 +17,6 @@ const collectionName = "products";
 // This section will help you get a list of all the records.
 router.route("/product/:category").get(function (req, res) {
     let db_connect = dbo.getDb("audiophile");
-    console.log(collectionName)
     db_connect
         .collection(collectionName)
         .find({"category":req.params.category})
@@ -27,14 +26,25 @@ router.route("/product/:category").get(function (req, res) {
         });
 });
 
+router.route("/product/featured").get(function (req, res) {
+    let db_connect = dbo.getDb("audiophile");
+    db_connect
+        .collection(collectionName)
+        .find({isFeatured: {$ne: false}})
+        .toArray(function (err, result) {
+            if (err) throw err;
+            res.json(result);
+        });
+});
+
 // This section will help you get a single record by id
-router.route("/product/:category/:id").get(function (req, res) {
+router.route("/product/:id").get(function (req, res) {
     let db_connect = dbo.getDb();
     let collectionName = req.params.category;
     let myquery = { _id: ObjectId(req.params.id) };
     db_connect
         .collection(collectionName)
-        .findOne({"category":req.params.category},myquery, function (err, result) {
+        .findOne(myquery, function (err, result) {
             if (err) throw err;
             res.json(result);
         });
@@ -81,7 +91,7 @@ router.post("/product/add", function (req, response) {
         description: req.body.description,
         price: req.body.price,
         path: req.body.path,
-        feature: req.body.feature,
+        isFeatured: req.body.feature,
         category: req.body.category,
     };
     db_connect.collection(collectionName).insertOne(myobj, function (err, res) {
