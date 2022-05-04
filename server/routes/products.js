@@ -2,10 +2,10 @@ const express = require("express");
 
 const { v4: uuidv4 } = require('uuid');
 const multer = require('multer');
-// productRoutes is an instance of the express router.
+// router is an instance of the express router.
 // We use it to define our routes.
 // The router will be added as a middleware and will take control of requests starting with path /record.
-const productRoutes = express.Router();
+const router = express.Router();
 
 // This will help us connect to the database
 const dbo = require("../db/connector");
@@ -15,7 +15,7 @@ const ObjectId = require("mongodb").ObjectId;
 const collectionName = "products";
 
 // This section will help you get a list of all the records.
-productRoutes.route("/product/:category").get(function (req, res) {
+router.route("/product/:category").get(function (req, res) {
     let db_connect = dbo.getDb("audiophile");
     console.log(collectionName)
     db_connect
@@ -28,7 +28,7 @@ productRoutes.route("/product/:category").get(function (req, res) {
 });
 
 // This section will help you get a single record by id
-productRoutes.route("/product/:category/:id").get(function (req, res) {
+router.route("/product/:category/:id").get(function (req, res) {
     let db_connect = dbo.getDb();
     let collectionName = req.params.category;
     let myquery = { _id: ObjectId(req.params.id) };
@@ -42,7 +42,7 @@ productRoutes.route("/product/:category/:id").get(function (req, res) {
 
 
 // This section will help you update a record by id.
-productRoutes.route("/update/:id").post(function (req, response) {
+router.route("/update/:id").post(function (req, response) {
     let db_connect = dbo.getDb();
     let myquery = { _id: ObjectId(req.params.id) };
     let newvalues = {
@@ -55,7 +55,7 @@ productRoutes.route("/update/:id").post(function (req, response) {
 });
 
 // This section will help you delete a record
-productRoutes.route("/:id").delete((req, response) => {
+router.route("/:id").delete((req, response) => {
     let db_connect = dbo.getDb();
     let myquery = { _id: ObjectId(req.params.id) };
     db_connect.collection(collectionName).deleteOne(myquery, function (err, obj) {
@@ -66,13 +66,13 @@ productRoutes.route("/:id").delete((req, response) => {
 });
 
 // Admin auth
-productRoutes.post("/admin/auth", (req, res) => {
+router.post("/admin/auth", (req, res) => {
     const username = req.body.user;
     const password = req.body.password;
 });
 
 // This section will help you create a new record.
-productRoutes.post("/product/add", function (req, response) {
+router.post("/product/add", function (req, response) {
     let db_connect = dbo.getDb();
     let myobj = {
         title: req.body.title,
@@ -112,7 +112,7 @@ var storage = multer.diskStorage({
 });
 var upload = multer({ storage: storage });
 
-productRoutes.post('/image/upload', upload.single('productImage'), function (req, res) {
+router.post('/image/upload', upload.single('productImage'), function (req, res) {
     console.log(req.file)
     if (!req.file) {
         console.log("No file received");
@@ -128,4 +128,4 @@ productRoutes.post('/image/upload', upload.single('productImage'), function (req
     }
 })
 
-module.exports = productRoutes;
+module.exports = router;
