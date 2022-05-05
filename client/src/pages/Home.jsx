@@ -1,8 +1,15 @@
-import React from 'react';
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import ProductCarousel from '../component/ProductCarousel';
+import { getFeaturedProducts } from '../actions/product'
 
 const Home = () => {
+
+  useEffect(() => {
+    getFeaturedProducts();
+  }, [])
+
+  // const featuredProduct = 
 
   return (
     <>
