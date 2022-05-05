@@ -1,42 +1,50 @@
-const dbo = require("../db/connector");
+// const db = require("../db/connector");
 const productSchema = require("../model/productSchema");
 // This help convert the id from string to ObjectId for the _id.
-const ObjectId = require("mongodb").ObjectId;
-
-const collectionName = "products";
+// const ObjectId = require("mongodb").ObjectId;
+// const mongoose = require("mongoose");
 
 const getAllProducts = (req, res) => {
-    let db_connect = dbo.getDb("audiophile");
-    db_connect
-        .collection(collectionName)
-        .find({ "category": req.params.category })
-        .toArray(function (err, result) {
-            if (err) throw err;
-            res.json(result);
-        });
+    // const db = mongoose.connection.db;
+    // let db_connect = mongoose.connection.db;
+    // db_connect
+    //     .collection(collectionName)
+    //     .find({ "category": req.params.category })
+    //     .toArray(function (err, result) {
+    //         if (err) throw err;
+    //         res.json(result);
+    //     });
 }
 
-const getFeaturedProducts = (req, res) => {
-    let db_connect = dbo.getDb("audiophile");
-    db_connect
-        .collection(collectionName)
-        .find({ isFeatured: { $ne: false } })
-        .toArray(function (err, result) {
-            if (err) throw err;
-            res.json(result);
-        });
+const getAllFeaturedProducts = (req, res) => {
+    console.log("Featured")
+    console.log("Featured")
+    // let db_connect = dbo.db;
+    // db_connect
+    //     .collection(collectionName)
+    productSchema.find({ isFeatured: { $ne: false } }, function(err,data){
+        if(err){
+            res.json({success: false, error: err});
+        }
+        console.log(data)
+        res.json({success: true, data});
+    });
+    // .toArray(function (err, result) {
+    //     if (err) throw err;
+    //     res.json(result);
+    // });
 }
 
 const getProduct = (req, res) => {
-    let db_connect = dbo.getDb();
-    let collectionName = req.params.category;
-    let myquery = { _id: ObjectId(req.params.id) };
-    db_connect
-        .collection(collectionName)
-        .findOne(myquery, function (err, result) {
-            if (err) throw err;
-            res.json(result);
-        });
+    // let db_connect = dbo.getDb();
+    // let collectionName = req.params.category;
+    // let myquery = { _id: ObjectId(req.params.id) };
+    // db_connect
+    //     .collection(collectionName)
+    //     .findOne(myquery, function (err, result) {
+    //         if (err) throw err;
+    //         res.json(result);
+    //     });
 }
 
 const addProduct = (req, res) => {
@@ -80,4 +88,4 @@ const uploadImage = (req, res) => {
     }
 }
 
-module.exports = { getAllProducts, getProduct, getFeaturedProducts, uploadImage, addProduct }
+module.exports = { getAllProducts, getProduct, getAllFeaturedProducts, uploadImage, addProduct }
