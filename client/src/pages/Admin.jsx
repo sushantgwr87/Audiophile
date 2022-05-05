@@ -11,12 +11,13 @@ const Admin = () => {
         title: "",
         quote: "",
         price: 1000,
+        caption: "",
         description: "",
         feature: false,
         category: "headphones",
     });
 
-    const { title, price, description, quote, category } = formData;
+    const { title, price, caption, description, quote, category } = formData;
 
     const onChange = (e) =>
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -94,12 +95,23 @@ const Admin = () => {
                             value={quote}
                             onChange={(e) => onChange(e)}
                         />
+                        <label htmlFor="caption">Caption</label>
+                        <textarea
+                            className="upload_content___input"
+                            name="caption"
+                            id="caption"
+                            placeholder="Enter Caption"
+                            rows="3"
+                            value={caption}
+                            onChange={(e) => onChange(e)}
+                            required
+                        />
                         <label htmlFor="description">description</label>
                         <textarea
                             className="upload_content___input"
                             name="description"
                             id="description"
-                            placeholder="Enter description"
+                            placeholder="Enter Description"
                             rows="10"
                             value={description}
                             onChange={(e) => onChange(e)}
