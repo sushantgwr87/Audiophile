@@ -19,9 +19,7 @@ export async function imageUpload(image) {
 
 export async function productUpload(formData) {
 
-  console.log(formData);
   const body = JSON.stringify(formData)
-  console.log(body);
 
   const res = await domainurl.post("product/add", body);
 
