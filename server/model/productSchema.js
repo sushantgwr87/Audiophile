@@ -12,6 +12,10 @@ const productSchema = new mongoose.Schema({
     quote: {
         type: String,
     },
+    caption: {
+        type: String,
+        required: true,
+    },
     description: {
         type: String,
         required: true,
@@ -29,7 +33,7 @@ const productSchema = new mongoose.Schema({
         required: true,
     },
     category: {
-        type: string,
+        type: String,
         required: true,
     },
     
