@@ -34,7 +34,7 @@ const Admin = () => {
         e.preventDefault();
         const imageResult = await imageUpload(image)
         console.log(imageResult);
-        if (imageResult.message) {
+        if (imageResult.status) {
             let productData = {
                 ...formData,
                 path: imageResult.path,
