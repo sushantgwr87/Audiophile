@@ -32,7 +32,7 @@ const Card = ({
         <div className={`${styles.card} ${isreverse && styles.card___reverse}`}>
             {imagePath &&
                 <div className={styles.card_photo}>
-                    <img src={imagePath} alt='CardImage' />
+                    <img src={process.env.REACT_APP_PUBLIC_API_URL+imagePath} alt='CardImage' />
                 </div>
             }
             <div className={styles.card_content}>
