@@ -1,30 +1,32 @@
 import domainurl from "../domainAPI";
 
 export async function getCategoryProducts(category) {
-    const res = await domainurl.get(`${category}/products`);
+    try {
+        const res = await domainurl.get(`${category}/products`);
+        if (res.data.status)
+            localStorage.setItem(`${category}Products`, JSON.stringify(res.data.data));
+    }
+    catch (error) {
+        console.log(error);
+    }
 
-    const productData = res.data;
-
-    console.log(productData);
 }
 
 export async function getFeaturedProducts() {
-    console.log("called");
-   try {
-    const res = await domainurl.get(`/featured`);
+    try {
+        const res = await domainurl.get(`/featured`);
 
-    const productData = res.data;
-
-    console.log(productData);
-   }
-   catch(error) {
-       console.log(error);
-   }
+        localStorage.setItem("featuredProducts", JSON.stringify(res.data.data));
+    }
+    catch (error) {
+        console.log(error);
+    }
 }
 
 export async function getProduct(id) {
     const res = await domainurl.get(`product/${id}`);
 
+    localStorage.setItem("fetchedProduct", JSON.stringify(res.data.data));
     const productData = res.data;
 
     console.log(productData);
