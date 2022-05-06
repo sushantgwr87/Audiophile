@@ -1,18 +1,19 @@
-import React from 'react';
+import { useEffect,useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import Card from '../component/Card';
 import ProductCarousel from '../component/ProductCarousel';
-
-const product = {
-    path: "/assets/headphone_side.png",
-    quote: "New Product",
-    head: "XX99 Mark II Headphones",
-    body: "Experience natural, lifelike audio and exceptional build quality made for the passionate music enthusiast.",
-}
+import { getProduct } from '../actions/product';
 
 const Product = () => {
 
-    const { category } = useParams();
+    const { id } = useParams();
+
+    const [product,setProduct] = useState(JSON.parse(localStorage.getItem("fetchedProduct")))
+
+    useEffect(() => {
+        getProduct(id);
+        setProduct(JSON.parse(localStorage.getItem("fetchedProduct")))
+    },[id])
 
     return (
         <div className='product_page'>
@@ -20,9 +21,9 @@ const Product = () => {
             <Card
                 imagePath={product.path}
                 cardQuote={product.quote}
-                cardBody={product.body}
-                cardHead={product.head}
-                productPrice={2999}
+                cardBody={product.description}
+                cardHead={product.longTitle}
+                productPrice={product.price}
                 isProduct
                 isreverse
             />
@@ -36,7 +37,7 @@ const Product = () => {
                 <div className="product_page___box">
                     <h3>In The Box</h3>
                     <ul>
-                        <li><span>1x</span> {category} unit</li>
+                        <li><span>1x</span> {product.category} unit</li>
                         <li><span>2x</span>Replacement Earcup</li>
                         <li><span>1x</span> User Manual</li>
                         <li><span>1x</span> 5mm Audio cable</li>
@@ -45,9 +46,9 @@ const Product = () => {
                 </div>
             </div>
             <div className="product_page___grid_image">
-                <img src={`/assets/${category}/image1.png`} alt="Product" />
-                <img src={`/assets/${category}/image2.png`} alt="Product" />
-                <img src={`/assets/${category}/image3.png`} alt="Product" />
+                <img src={`/assets/${product.category}/image1.png`} alt="Product" />
+                <img src={`/assets/${product.category}/image2.png`} alt="Product" />
+                <img src={`/assets/${product.category}/image3.png`} alt="Product" />
             </div>
             <ProductCarousel />
         </div>
