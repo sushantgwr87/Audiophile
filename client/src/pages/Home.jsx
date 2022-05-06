@@ -1,16 +1,15 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import ProductCarousel from '../component/ProductCarousel';
-import { getFeaturedProducts } from '../actions/product'
+import { getFeaturedProducts } from '../actions/product';
 
 const Home = () => {
 
   useEffect(() => {
     getFeaturedProducts();
+    // getCategoryProducts("headphones");
   }, [])
-
-  // const featuredProduct = 
-
+  
   return (
     <>
       <div className='featured_card'>
