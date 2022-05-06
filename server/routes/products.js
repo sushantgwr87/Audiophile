@@ -3,7 +3,7 @@ const router = express.Router();
 
 const { v4: uuidv4 } = require('uuid');
 const multer = require('multer');
-const productController = require("../controller/productController")
+const productController = require("../controller/productController");
 
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -18,9 +18,9 @@ var storage = multer.diskStorage({
 var upload = multer({ storage: storage });
 
 
-router.get("/product/:category", productController.getAllProducts);
-router.get("/product/featured", productController.getAllFeaturedProducts);
-router.get("/product/:id", productController.getProduct);
+// router.get("/product/:category", productController.getAllProducts);
+router.get("/product/featured", productController.featuredProducts);
+// router.get("/product/:id", productController.getProduct);
 
 router.post("/product/add", productController.addProduct);
 router.post("/image/upload", upload.single('productImage'), productController.uploadImage);
