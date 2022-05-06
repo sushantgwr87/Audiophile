@@ -1,6 +1,6 @@
 const productSchema = require("../model/productSchema");
 // This help convert the id from string to ObjectId for the _id.
-// const ObjectId = require("mongodb").ObjectId;
+const ObjectId = require("mongodb").ObjectId;
 
 const getAllProducts = (req, res) => {
     productSchema.find({ category: req.params.category }, function (err, data) {
@@ -13,33 +13,22 @@ const getAllProducts = (req, res) => {
 }
 
 const featuredProducts = async (req, res) => {
-    console.log("Featured")
-    // console.log(req);
     productSchema.find({ isFeatured: { $eq: true } }, function (err, data) {
         if (err) {
             res.json({ success: false, error: err });
         }
         res.json({ success: true, data });
     });
-    // try {
-    //     const data = await productSchema.find();
-    //     res.json(data)
-    // }
-    // catch (error) {
-    //     res.status(500).json({ message: error.message })
-    // }
 }
 
 const getProduct = (req, res) => {
-    // let db_connect = dbo.getDb();
-    // let collectionName = req.params.category;
-    // let myquery = { _id: ObjectId(req.params.id) };
-    // db_connect
-    //     .collection(collectionName)
-    //     .findOne(myquery, function (err, result) {
-    //         if (err) throw err;
-    //         res.json(result);
-    //     });
+    productSchema.find({ _id: ObjectId( req.params.id ) }, function (err, data) {
+        if (err) {
+            res.json({ success: false, error: err });
+        }
+        console.log(data)
+        res.json({ success: true, data });
+    });
 }
 
 const addProduct = (req, res) => {
