@@ -1,7 +1,7 @@
 import domainurl from "../domainAPI";
 
 export async function getCategoryProducts(category) {
-    const res = await domainurl.get(`product/${category}`);
+    const res = await domainurl.get(`${category}/products`);
 
     const productData = res.data;
 
@@ -11,7 +11,7 @@ export async function getCategoryProducts(category) {
 export async function getFeaturedProducts() {
     console.log("called");
    try {
-    const res = await domainurl.get(`product/featured`);
+    const res = await domainurl.get(`/featured`);
 
     const productData = res.data;
 
@@ -23,7 +23,7 @@ export async function getFeaturedProducts() {
 }
 
 export async function getProduct(id) {
-    const res = await domainurl.get(`product/`, { params: { id } });
+    const res = await domainurl.get(`product/${id}`);
 
     const productData = res.data;
 
