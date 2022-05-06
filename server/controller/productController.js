@@ -5,7 +5,7 @@ const productSchema = require("../model/productSchema");
 // const mongoose = require("mongoose");
 
 const getAllProducts = (req, res) => {
-    productSchema.find(function (err, data) {
+    productSchema.find({ category: req.params.category }, function (err, data) {
         if (err) {
             res.json({ success: false, error: err });
         }
@@ -17,11 +17,11 @@ const getAllProducts = (req, res) => {
 const featuredProducts = async (req, res) => {
     console.log("Featured")
     // console.log(req);
-    productSchema.find({ isFeatured: {$eq: true} }, function(err,data){
-        if(err){
-            res.json({success: false, error: err});
+    productSchema.find({ isFeatured: { $eq: true } }, function (err, data) {
+        if (err) {
+            res.json({ success: false, error: err });
         }
-        res.json({success: true, data});
+        res.json({ success: true, data });
     });
     // try {
     //     const data = await productSchema.find();

@@ -18,7 +18,7 @@ var storage = multer.diskStorage({
 var upload = multer({ storage: storage });
 
 
-// router.get("/product/:category", productController.getAllProducts);
+router.get("/product/:category", productController.getAllProducts);
 router.get("/product/featured", productController.featuredProducts);
 // router.get("/product/:id", productController.getProduct);
 
