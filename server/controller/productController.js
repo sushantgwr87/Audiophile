@@ -5,34 +5,31 @@ const productSchema = require("../model/productSchema");
 // const mongoose = require("mongoose");
 
 const getAllProducts = (req, res) => {
-    // const db = mongoose.connection.db;
-    // let db_connect = mongoose.connection.db;
-    // db_connect
-    //     .collection(collectionName)
-    //     .find({ "category": req.params.category })
-    //     .toArray(function (err, result) {
-    //         if (err) throw err;
-    //         res.json(result);
-    //     });
+    productSchema.find(function (err, data) {
+        if (err) {
+            res.json({ success: false, error: err });
+        }
+        console.log(data)
+        res.json({ success: true, data });
+    });
 }
 
-const getAllFeaturedProducts = (req, res) => {
+const featuredProducts = async (req, res) => {
     console.log("Featured")
-    console.log("Featured")
-    // let db_connect = dbo.db;
-    // db_connect
-    //     .collection(collectionName)
-    productSchema.find({ isFeatured: { $ne: false } }, function(err,data){
+    // console.log(req);
+    productSchema.find({ isFeatured: {$eq: true} }, function(err,data){
         if(err){
             res.json({success: false, error: err});
         }
-        console.log(data)
         res.json({success: true, data});
     });
-    // .toArray(function (err, result) {
-    //     if (err) throw err;
-    //     res.json(result);
-    // });
+    // try {
+    //     const data = await productSchema.find();
+    //     res.json(data)
+    // }
+    // catch (error) {
+    //     res.status(500).json({ message: error.message })
+    // }
 }
 
 const getProduct = (req, res) => {
@@ -88,4 +85,4 @@ const uploadImage = (req, res) => {
     }
 }
 
-module.exports = { getAllProducts, getProduct, getAllFeaturedProducts, uploadImage, addProduct }
+module.exports = { getAllProducts, getProduct, featuredProducts, uploadImage, addProduct }
