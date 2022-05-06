@@ -7,21 +7,30 @@ const Home = () => {
 
   useEffect(() => {
     getFeaturedProducts();
-    // getCategoryProducts("headphones");
   }, [])
-  
+
+  const featuredProducts = JSON.parse(localStorage.getItem("featuredProducts"));
+
+  const headphoneData = featuredProducts.find(obj => obj.category === "headphones");
+  const speakerOneData = featuredProducts.find(obj => obj.category === "speaker" && obj.title === "ZX9");
+  const speakerTwoData = featuredProducts.find(obj => obj.category === "speaker" && obj.title !== "ZX9");
+  const earphoneData = featuredProducts.find(obj => obj.category === "earphones");
+
+  console.log(headphoneData)
+
+  console.log(featuredProducts)
+
   return (
     <>
       <div className='featured_card'>
         <div className='featured_card___photo'>
-          {/* <img src={process.env.REACT_APP_PUBLIC_API_URL+'/assets/headphone_crop.png'} alt='CardImage' /> */}
-          <img src={'/assets/headphone_crop.png'} alt='CardImage' />
+          <img src={process.env.REACT_APP_PUBLIC_API_URL+headphoneData.path} alt='CardImage' />
         </div>
         <div className='featured_card___content'>
-          <h5>New Product</h5>
-          <h3>XX99 Mark II Headphones</h3>
-          <p>Experience natural, lifelike audio and exceptional build quality made for the passionate music enthusiast.</p>
-          <Link to={`/product/headphone/${4}`}>
+          <h5>{headphoneData.quote}</h5>
+          <h3>{headphoneData.longTitle}</h3>
+          <p>{headphoneData.caption}</p>
+          <Link to={`/product/${headphoneData._id}`}>
             See Product
           </Link>
         </div>
@@ -30,30 +39,30 @@ const Home = () => {
       <div className="featured_product___card_list">
         <div className="featured_product___card">
           <div className="featured_product___image">
-            <img src="/assets/speaker2.png" alt="product" />
+          <img src={process.env.REACT_APP_PUBLIC_API_URL+speakerOneData.path} alt='CardImage' />
           </div>
           <div className='featured_product___content'>
-            <h3>ZX9 Speaker</h3>
-            <p>Upgrade to premium speakers that phenomenally build to deliver truly remarkable sound</p>
-            <Link to={`/product/speaker/${1}`}>See Product</Link>
+            <h3>{speakerOneData.longTitle}</h3>
+            <p>{speakerOneData.caption}</p>
+            <Link to={`/product/${speakerOneData._id}`}>See Product</Link>
           </div>
         </div>
         <div className="featured_product___card">
           <div className="featured_product___image">
-            <img src="/assets/bluetooth_speaker.png" alt="product" />
+          <img src={process.env.REACT_APP_PUBLIC_API_URL+speakerTwoData.path} alt='CardImage' />
           </div>
           <div className='featured_product___content'>
-            <h3>ZX7 Speaker</h3>
-            <Link to={`/product/speaker/${2}`}>See Product</Link>
+            <h3>{speakerTwoData.longTitle}</h3>
+            <Link to={`/product/${speakerTwoData._id}`}>See Product</Link>
           </div>
         </div>
         <div className="featured_product___card">
           <div className="featured_product___image">
-            <img src="/assets/earphone.png" alt="product" />
+          <img src={process.env.REACT_APP_PUBLIC_API_URL+earphoneData.path} alt='CardImage' />
           </div>
           <div className='featured_product___content'>
-            <h3>YX1 Earphones</h3>
-            <Link to={`/product/earphone/${3}`}>See Product</Link>
+            <h3>{earphoneData.longTitle}</h3>
+            <Link to={`/product/${earphoneData._id}`}>See Product</Link>
           </div>
         </div>
       </div>
