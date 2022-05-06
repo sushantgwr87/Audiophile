@@ -1,8 +1,6 @@
-// const db = require("../db/connector");
 const productSchema = require("../model/productSchema");
 // This help convert the id from string to ObjectId for the _id.
 // const ObjectId = require("mongodb").ObjectId;
-// const mongoose = require("mongoose");
 
 const getAllProducts = (req, res) => {
     productSchema.find({ category: req.params.category }, function (err, data) {
