@@ -37,7 +37,7 @@ function App() {
             <Route path="/headphones" element={<Headphones />} />
             <Route path="/speakers" element={<Speakers />} />
             <Route path="/earphones" element={<Earphones />} />
-            <Route path="/product/:category/:id" element={<Product />} />
+            <Route path="/product/:id" element={<Product />} />
             <Route path="/checkout" element={<Checkout />} />
             <Route path="/admin" element={<Admin />} />
           </Routes>
