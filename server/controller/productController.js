@@ -5,29 +5,29 @@ const ObjectId = require("mongodb").ObjectId;
 const getAllProducts = (req, res) => {
     productSchema.find({ category: req.params.category }, function (err, data) {
         if (err) {
-            res.json({ success: false, error: err });
+            res.json({ status: false, error: err });
         }
-        console.log(data)
-        res.json({ success: true, data });
+        // console.log(data)
+        res.json({ status: true, data });
     });
 }
 
 const featuredProducts = async (req, res) => {
     productSchema.find({ isFeatured: { $eq: true } }, function (err, data) {
         if (err) {
-            res.json({ success: false, error: err });
+            res.json({ status: false, error: err });
         }
-        res.json({ success: true, data });
+        res.json({ status: true, data });
     });
 }
 
 const getProduct = (req, res) => {
-    productSchema.find({ _id: ObjectId( req.params.id ) }, function (err, data) {
+    productSchema.findOne({ _id: ObjectId( req.params.id ) }, function (err, data) {
         if (err) {
-            res.json({ success: false, error: err });
+            res.json({ status: false, error: err });
         }
-        console.log(data)
-        res.json({ success: true, data });
+        // console.log(data)
+        res.json({ status: true, data });
     });
 }
 
@@ -61,12 +61,12 @@ const uploadImage = (req, res) => {
     if (!req.file) {
         console.log("No file received");
         res.json({
-            message: false,
+            status: false,
         })
     }
     else {
         res.json({
-            message: true,
+            status: true,
             path: req.file.filename
         })
     }
