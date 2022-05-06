@@ -8,8 +8,8 @@ const port = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
-const Router = require("./routes/products")
-app.use(Router);
+const Routes = require("./routes/products")
+app.use(Routes);
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
