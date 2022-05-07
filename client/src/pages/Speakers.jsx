@@ -6,9 +6,9 @@ const Speakers = () => {
 
   useEffect(() => {
     getCategoryProducts("speaker");
-  }, [])
+  })
 
-  const productData = JSON.parse(localStorage.getItem("speakerProducts"));
+  const productData = JSON.parse(sessionStorage.getItem("speakerProducts"));
 
   console.log(productData)
 
