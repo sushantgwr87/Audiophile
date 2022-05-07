@@ -8,11 +8,11 @@ const Product = () => {
 
     const { id } = useParams();
 
-    const [product,setProduct] = useState(JSON.parse(localStorage.getItem("fetchedProduct")))
+    const [product,setProduct] = useState(JSON.parse(sessionStorage.getItem("fetchedProduct")))
 
     useEffect(() => {
         getProduct(id);
-        setProduct(JSON.parse(localStorage.getItem("fetchedProduct")))
+        setProduct(JSON.parse(sessionStorage.getItem("fetchedProduct")))
     },[id])
 
     return (
