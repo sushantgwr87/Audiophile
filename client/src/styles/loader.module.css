@@ -1,0 +1,58 @@
+.loader_wrapper  {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.loader_logo {
+    width: 200px;
+}
+.loader_circle {
+    fill:none;
+    stroke: #030529;
+    stroke-miterlimit:10;
+    stroke-width:8px;
+    animation: draw 1.5s ease infinite;
+}
+@keyframes draw {
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+.letter {
+    fill: #030529;
+    animation: logo_show 1s 1.8s ease forwards,spread 1s 2.5s ease forwards;
+    opacity: 0;
+}
+/* logo letter split pre-styling */
+.G_up_part {
+    transform: translate(-529.1px, -204px);
+}
+.G_down_part {
+    transform: translate(-533px, -200px)
+}
+.S_down_part {
+    transform: translate(-526.2px, -188px)
+}
+.S_up_part {
+    transform: translate(-525px, -199.5px)
+}
+.S_upCurve_part {
+    transform: translate(-522.7px, -193.1px);
+}
+/* loader animation */
+@keyframes logo_show {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+@keyframes spread {
+    100% {
+        transform: translate(-527.5px, -196.5px);
+    }
+}
