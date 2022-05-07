@@ -8,7 +8,7 @@ const Earphones = () => {
     getCategoryProducts("earphones");
   }, [])
 
-  const productData = JSON.parse(localStorage.getItem("earphonesProducts"));
+  const productData = JSON.parse(sessionStorage.getItem("earphonesProducts"));
 
   return (
     <>
