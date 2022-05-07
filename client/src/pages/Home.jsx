@@ -1,30 +1,40 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import ProductCarousel from '../component/ProductCarousel';
 import { getFeaturedProducts } from '../actions/product';
+import Loader from '../component/Loader';
 
 const Home = () => {
 
+  const [isLoading , setIsLoading] = useState(true)
+  const [featuredProducts , setFeaturedProducts] = useState(null)
+  
+  // const featuredProducts = sessionStorage.getItem("featuredProducts") ? JSON.parse(sessionStorage.getItem("featuredProducts")) : null;
+  
   useEffect(() => {
     getFeaturedProducts();
-  }, [])
+    if(sessionStorage.getItem("featuredProducts"))
+    {
+      setFeaturedProducts(JSON.parse(sessionStorage.getItem("featuredProducts")))
+      setIsLoading(false);
+    }
+  }, [featuredProducts])
 
-  const featuredProducts = JSON.parse(localStorage.getItem("featuredProducts"));
-
+  if (isLoading) {
+    return (
+      <Loader />
+    )
+  }
   const headphoneData = featuredProducts.find(obj => obj.category === "headphones");
   const speakerOneData = featuredProducts.find(obj => obj.category === "speaker" && obj.title === "ZX9");
   const speakerTwoData = featuredProducts.find(obj => obj.category === "speaker" && obj.title !== "ZX9");
   const earphoneData = featuredProducts.find(obj => obj.category === "earphones");
 
-  console.log(headphoneData)
-
-  console.log(featuredProducts)
-
   return (
     <>
       <div className='featured_card'>
         <div className='featured_card___photo'>
-          <img src={process.env.REACT_APP_PUBLIC_API_URL+headphoneData.path} alt='CardImage' />
+          <img src={process.env.REACT_APP_PUBLIC_API_URL + headphoneData.path} alt='CardImage' />
         </div>
         <div className='featured_card___content'>
           <h5>{headphoneData.quote}</h5>
@@ -39,7 +49,7 @@ const Home = () => {
       <div className="featured_product___card_list">
         <div className="featured_product___card">
           <div className="featured_product___image">
-          <img src={process.env.REACT_APP_PUBLIC_API_URL+speakerOneData.path} alt='CardImage' />
+            <img src={process.env.REACT_APP_PUBLIC_API_URL + speakerOneData.path} alt='CardImage' />
           </div>
           <div className='featured_product___content'>
             <h3>{speakerOneData.longTitle}</h3>
@@ -49,7 +59,7 @@ const Home = () => {
         </div>
         <div className="featured_product___card">
           <div className="featured_product___image">
-          <img src={process.env.REACT_APP_PUBLIC_API_URL+speakerTwoData.path} alt='CardImage' />
+            <img src={process.env.REACT_APP_PUBLIC_API_URL + speakerTwoData.path} alt='CardImage' />
           </div>
           <div className='featured_product___content'>
             <h3>{speakerTwoData.longTitle}</h3>
@@ -58,7 +68,7 @@ const Home = () => {
         </div>
         <div className="featured_product___card">
           <div className="featured_product___image">
-          <img src={process.env.REACT_APP_PUBLIC_API_URL+earphoneData.path} alt='CardImage' />
+            <img src={process.env.REACT_APP_PUBLIC_API_URL + earphoneData.path} alt='CardImage' />
           </div>
           <div className='featured_product___content'>
             <h3>{earphoneData.longTitle}</h3>
