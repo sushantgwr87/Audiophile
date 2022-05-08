@@ -14,25 +14,24 @@ const Card = ({
     isProduct = false,
     isreverse = false,
     buttonLink = null,
+    cartFunction
 }) => {
 
-    const [countValue,setCountValue] = useState(1);
+    const [countValue, setCountValue] = useState(1);
 
     const handleCounterValue = (value) => {
         setCountValue(value);
     }
 
     const handleCart = () => {
-        
+        cartFunction && cartFunction(countValue);
     }
-
-    console.log(countValue)
 
     return (
         <div className={`${styles.card} ${isreverse && styles.card___reverse}`}>
             {imagePath &&
                 <div className={styles.card_photo}>
-                    <img src={process.env.REACT_APP_PUBLIC_API_URL+imagePath} alt='CardImage' />
+                    <img src={process.env.REACT_APP_PUBLIC_API_URL + imagePath} alt='CardImage' />
                 </div>
             }
             <div className={styles.card_content}>
@@ -52,7 +51,7 @@ const Card = ({
                         <div className={styles.card_product}>
                             <CounterButton handleCallback={handleCounterValue} />
                             <button className={styles.card_btn} onClick={handleCart}>
-                                Add To Cart
+                                {countValue===0? "Remove from Cart" : "Add to Cart"}
                             </button>
                         </div>
                     </>
