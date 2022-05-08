@@ -1,32 +1,20 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import CheckoutCard from '../component/CheckoutCard';
-
-const productData = [
-  {
-    path: "/assets/earphone_blue.png",
-    id: 200,
-    head: "XX99 II",
-    price: 2000,
-    quantity: 2
-  },
-  {
-    path: "/assets/earphone_green.png",
-    id: 201,
-    head: "XX99 I",
-    price: 3999,
-    quantity: 1
-  },
-  {
-    path: "/assets/earphone_aqua.png",
-    id: 202,
-    head: "X10",
-    price: 1999,
-    quantity: 2
-  },
-]
+import useLocalStorage from '../customHook/useLocalStorage';
 
 const Checkout = () => {
+
+  const [cart, setCart] = useLocalStorage("cart", []);
+  const totalPrice = 2000
+  
+  useEffect(() => {
+    setCart(JSON.parse(localStorage.getItem("cart")));
+  });
+
+
+  const vatPrice = 1045;
+  const shippingPrice = 50;
 
   const [check, setCheck] = useState(true);
 
@@ -115,9 +103,9 @@ const Checkout = () => {
         <div className="checkout_summary">
           <h2>Summary</h2>
           <div className="summary_cards">
-            {productData.map((value, index) =>
+            {cart.map((value, index) =>
               <CheckoutCard
-                key={value.id}
+                key={value._id}
                 imagePath={value.path}
                 productName={value.head}
                 productPrice={value.price}
@@ -133,10 +121,10 @@ const Checkout = () => {
               <h3>Grand Total</h3>
             </div>
             <div className="summary_values">
-              <h3>&#8377; 2,999</h3>
-              <h3>&#8377; 50</h3>
-              <h3>&#8377; 1045</h3>
-              <h3>&#8377; 50090</h3>
+              <h3>&#8377; {totalPrice.current}</h3>
+              <h3>&#8377; {shippingPrice}</h3>
+              <h3>&#8377; {vatPrice}</h3>
+              <h3>&#8377; {vatPrice + shippingPrice + totalPrice.current}</h3>
             </div>
           </div>
           <button>Continue and Pay</button>
