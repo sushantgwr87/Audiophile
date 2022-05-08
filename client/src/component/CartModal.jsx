@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import ReactDOM from "react-dom";
 import useMountTransition from "../customHook/useMountTransition";
@@ -9,8 +9,11 @@ import useLocalStorage from "../customHook/useLocalStorage";
 const CartModal = ({ show, onClose }) => {
 
   const hasTransitionedIn = useMountTransition(show, 1000);
+  const [isCartEmpty, setIsCartEmpty] = useState(true);
 
   const [cartList, setCartList] = useLocalStorage("cart", [])
+  console.log(cartList)
+  const [totalPrice, setTotalPrice] = useLocalStorage("totalCartPrice", cartList ? cartList.reduce((sum, val) => sum + val.price, 0) : 0)
 
   useEffect(() => {
     const closeOnEscapeKeyDown = e => {
@@ -23,10 +26,26 @@ const CartModal = ({ show, onClose }) => {
   }, [onClose]);
 
   useEffect(() => {
-    setCartList(JSON.parse(localStorage.getItem("cart")));
+    if (localStorage.getItem("cart")) {
+      setCartList(JSON.parse(localStorage.getItem("cart")));
+      // let cartArray = JSON.parse(localStorage.getItem("cart"));
+      setTotalPrice(cartList && cartList.reduce((sum, val) => sum + +val.price, 0))
+    }
+    if(cartList&& cartList.length>0)
+      setIsCartEmpty(false)
   }, [show]);
 
-  const isCartFull = cartList && cartList.length > 0 ? true : false;
+  const updateCart = (id, productQuantity) => {
+    let cartArray = cartList
+    let productIndex = cartArray.findIndex(val => val._id === id);
+    if (productQuantity > 0) {
+      cartArray[productIndex].quantity = productQuantity;
+      setCartList(cartArray);
+    }
+    else if (productQuantity === 0 && productIndex === -1) {
+      setCartList(cartList.filter(val => val._id !== id));
+    }
+  }
 
   const cartEmpty = (
     <div className={styles.modal___cart_empty}>
@@ -42,21 +61,23 @@ const CartModal = ({ show, onClose }) => {
         <button>Remove All</button>
       </div>
       <div className={styles.modal_body}>
-        {isCartFull && cartList.map((value, index) =>
+        {cartList && cartList.map((value, index) =>
           <CheckoutCard
             isModal
             key={value._id}
+            productId={value._id}
             imagePath={value.path}
             productName={value.title}
             productPrice={value.price}
             productQuantity={value.quantity}
+            cartUpdate={updateCart}
           />
         )}
       </div>
       <div className={styles.modal_footer}>
         <div className={styles.modal_footer___total_bill}>
           <h3>Total</h3>
-          <h4>&#8377; 2,999</h4>
+          <h4>&#8377; {totalPrice}</h4>
         </div>
         <Link to={"/checkout"} onClick={onClose}>Continue to Payout</Link>
       </div>
@@ -66,7 +87,7 @@ const CartModal = ({ show, onClose }) => {
   const modalContent = hasTransitionedIn || show ? (
     <div className={`${styles.modal_overlay} ${hasTransitionedIn && show ? styles.modal_show : styles.modal_hide}`} onClick={onClose}>
       <div className={`${styles.modal} ${hasTransitionedIn && show ? styles.modal_show : styles.modal_hide}`} onClick={e => e.stopPropagation()}>
-        {isCartFull ? cartFilled : cartEmpty}
+        {isCartEmpty ? cartEmpty : cartFilled}
       </div>
     </div>
   ) : null
