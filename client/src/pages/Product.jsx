@@ -28,35 +28,38 @@ const Product = () => {
     }, [id])
 
     const addToCart = (productQuantity) => {
-        if (cart.length === 0 && productQuantity > 0) {
-            let productFinalData = { ...product, quantity: productQuantity }
-            setCart([...cart, productFinalData]);
-        }
-        else if (cart && productQuantity > 0) {
+        // if (cart && productQuantity > 0) {
+        //     let cartArray = cart
+        //     let productIndex = cartArray.findIndex(val => val._id === id);
+        //     if (productIndex === -1) {
+        //         let productFinalData = { ...product, quantity: productQuantity }
+        //         setCart([...cart, productFinalData]);
+        //     }
+        //     else {
+        //         cartArray[productIndex].quantity = productQuantity;
+        //         setCart(cartArray);
+        //     }
+        // }
+        // else if (productQuantity === 0) {
+        //     setCart(cart.filter(val => val._id !== id));
+        // }
+        if (cart) {
             let cartArray = cart
             let productIndex = cartArray.findIndex(val => val._id === id);
-            if (productIndex === -1) {
-                let productFinalData = { ...product, quantity: productQuantity }
-                setCart([...cart, productFinalData]);
+            if (productQuantity > 0) {
+                if (productIndex === -1) {
+                    let productFinalData = { ...product, quantity: productQuantity }
+                    setCart([...cart, productFinalData]);
+                }
+                else {
+                    cartArray[productIndex].quantity = productQuantity;
+                    setCart(cartArray);
+                }
             }
-            else {
-                cartArray[productIndex].quantity = productQuantity;
-                setCart(cartArray);
+            else if (productQuantity === 0 && productIndex === -1) {
+                setCart(cart.filter(val => val._id !== id));
             }
         }
-        else if (productQuantity === 0) {
-            setCart(cart.filter(val => val._id !== id));
-        }
-        // let cartArray = [...cart]
-        // let productIndex = cartArray.findIndex(val => val._id === id);
-        // if (productQuantity > 0 && productIndex === -1) {
-        //     let productFinalData = { ...product, quantity: productQuantity }
-        //     setCart([...cart, productFinalData]);
-        // }
-        // else {
-        //     cartArray[productIndex].quantity = productQuantity;
-        //     setCart(cartArray);
-        // }
     }
 
     return (
