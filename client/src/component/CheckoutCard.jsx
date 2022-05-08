@@ -6,7 +6,7 @@ const CheckoutCard = ({ isModal = false, imagePath, productName, productPrice = 
     return (
         <div className={styles.checkout_card}>
             <div className={styles.checkout_product___image}>
-                <img src={imagePath} alt="Product" />
+                <img src={process.env.REACT_APP_PUBLIC_API_URL+imagePath} alt="Product" />
             </div>
             <div className={styles.checkout_product___details}>
                 <h3>{productName}</h3>

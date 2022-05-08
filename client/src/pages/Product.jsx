@@ -5,12 +5,15 @@ import ProductCarousel from '../component/ProductCarousel';
 import { getProduct } from '../actions/product';
 import Loader from '../component/Loader';
 import useLocalStorage from '../customHook/useLocalStorage';
+import { useNavigate } from 'react-router-dom';
 
 const Product = () => {
 
     const { id } = useParams();
+    const navigate = useNavigate();
 
     const [cart, setCart] = useLocalStorage("cart", [])
+    console.log(cart)
 
     const [isLoading, setIsLoading] = useState(true)
     const [product, setproduct] = useLocalStorage("featchedProduct", null)
@@ -25,25 +28,41 @@ const Product = () => {
     }, [id])
 
     const addToCart = (productQuantity) => {
-        if (cart.length===0 && productQuantity>0) {
+        if (cart.length === 0 && productQuantity > 0) {
             let productFinalData = { ...product, quantity: productQuantity }
             setCart([...cart, productFinalData]);
         }
-        else if (productQuantity===0) {
-            setCart(cart.filter(val=> val._id!==id));
+        else if (cart && productQuantity > 0) {
+            let cartArray = cart
+            let productIndex = cartArray.findIndex(val => val._id === id);
+            if (productIndex === -1) {
+                let productFinalData = { ...product, quantity: productQuantity }
+                setCart([...cart, productFinalData]);
+            }
+            else {
+                cartArray[productIndex].quantity = productQuantity;
+                setCart(cartArray);
+            }
         }
-        else {
-            let cartArray = [...cart]
-            let productIndex = cartArray.findIndex(val=> val._id===id);
-            cartArray[productIndex].quantity = productQuantity;
-            setCart(cartArray);
+        else if (productQuantity === 0) {
+            setCart(cart.filter(val => val._id !== id));
         }
+        // let cartArray = [...cart]
+        // let productIndex = cartArray.findIndex(val => val._id === id);
+        // if (productQuantity > 0 && productIndex === -1) {
+        //     let productFinalData = { ...product, quantity: productQuantity }
+        //     setCart([...cart, productFinalData]);
+        // }
+        // else {
+        //     cartArray[productIndex].quantity = productQuantity;
+        //     setCart(cartArray);
+        // }
     }
 
     return (
         isLoading ? <Loader /> :
             <div className='product_page'>
-                <Link to={"/"}>Go Back</Link>
+                <Link to="#" onClick={() => navigate(-1)}>Go Back</Link>
                 <Card
                     imagePath={product.path}
                     cardQuote={product.quote}

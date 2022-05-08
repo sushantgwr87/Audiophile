@@ -6,37 +6,11 @@ import styles from "../styles/modal.module.css";
 import CheckoutCard from "./CheckoutCard";
 import useLocalStorage from "../customHook/useLocalStorage";
 
-const productData = [
-  {
-    path: "/assets/earphone_blue.png",
-    id: 200,
-    head: "XX99 II",
-    price: 2000,
-    quantity: 2
-  },
-  {
-    path: "/assets/earphone_green.png",
-    id: 201,
-    head: "XX99 I",
-    price: 3999,
-    quantity: 1
-  },
-  {
-    path: "/assets/earphone_aqua.png",
-    id: 202,
-    head: "X10",
-    price: 1999,
-    quantity: 2
-  },
-]
-
 const CartModal = ({ show, onClose }) => {
 
   const hasTransitionedIn = useMountTransition(show, 1000);
 
-  const [cartList, setCartList] = useLocalStorage("cartModal", [])
-
-  console.log(cartList)
+  const [cartList, setCartList] = useLocalStorage("cart", [])
 
   useEffect(() => {
     const closeOnEscapeKeyDown = e => {
@@ -48,12 +22,11 @@ const CartModal = ({ show, onClose }) => {
     return () => document.body.removeEventListener("keydown", closeOnEscapeKeyDown);
   }, [onClose]);
 
-  // useEffect(() => {
-  //   if(localStorage.getItem("cart"))
-  //     setCartList(JSON.parse(localStorage.getItem("cart")));
-  // }, [cartList]);
+  useEffect(() => {
+    setCartList(JSON.parse(localStorage.getItem("cart")));
+  }, [show]);
 
-  const isCartFull = true;
+  const isCartFull = cartList && cartList.length > 0 ? true : false;
 
   const cartEmpty = (
     <div className={styles.modal___cart_empty}>
@@ -69,12 +42,12 @@ const CartModal = ({ show, onClose }) => {
         <button>Remove All</button>
       </div>
       <div className={styles.modal_body}>
-        {productData.map((value, index) =>
+        {isCartFull && cartList.map((value, index) =>
           <CheckoutCard
             isModal
-            key={value.id}
+            key={value._id}
             imagePath={value.path}
-            productName={value.head}
+            productName={value.title}
             productPrice={value.price}
             productQuantity={value.quantity}
           />
