@@ -4,6 +4,7 @@ import ReactDOM from "react-dom";
 import useMountTransition from "../customHook/useMountTransition";
 import styles from "../styles/modal.module.css";
 import CheckoutCard from "./CheckoutCard";
+import useLocalStorage from "../customHook/useLocalStorage";
 
 const productData = [
   {
@@ -33,6 +34,10 @@ const CartModal = ({ show, onClose }) => {
 
   const hasTransitionedIn = useMountTransition(show, 1000);
 
+  const [cartList, setCartList] = useLocalStorage("cartModal", [])
+
+  console.log(cartList)
+
   useEffect(() => {
     const closeOnEscapeKeyDown = e => {
       if ((e.charCode || e.keyCode) === 27) {
@@ -42,6 +47,11 @@ const CartModal = ({ show, onClose }) => {
     document.body.addEventListener("keydown", closeOnEscapeKeyDown);
     return () => document.body.removeEventListener("keydown", closeOnEscapeKeyDown);
   }, [onClose]);
+
+  // useEffect(() => {
+  //   if(localStorage.getItem("cart"))
+  //     setCartList(JSON.parse(localStorage.getItem("cart")));
+  // }, [cartList]);
 
   const isCartFull = true;
 
