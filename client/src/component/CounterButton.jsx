@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-const CounterButton = ({handleCallback}) => {
+const CounterButton = ({ handleCallback }) => {
 
     const [count, setCount] = useState(1);
 
@@ -8,11 +8,11 @@ const CounterButton = ({handleCallback}) => {
         if (count === 0)
             return;
         setCount(count - 1);
-        // handleCallback(count-1)
+        handleCallback && handleCallback(count - 1)
     }
     const handleIncrement = () => {
         setCount(count + 1);
-        // handleCallback(count+1)
+        handleCallback && handleCallback(count + 1)
     }
 
     return (
