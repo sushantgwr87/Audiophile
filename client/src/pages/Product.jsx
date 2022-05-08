@@ -10,6 +10,8 @@ const Product = () => {
 
     const { id } = useParams();
 
+    const [cart, setCart] = useLocalStorage("cart", [])
+
     const [isLoading, setIsLoading] = useState(true)
     const [product, setproduct] = useLocalStorage("featchedProduct", null)
 
@@ -21,6 +23,22 @@ const Product = () => {
         }
         getData();
     }, [id])
+
+    const addToCart = (productQuantity) => {
+        if (cart.length===0 && productQuantity>0) {
+            let productFinalData = { ...product, quantity: productQuantity }
+            setCart([...cart, productFinalData]);
+        }
+        else if (productQuantity===0) {
+            setCart(cart.filter(val=> val._id!==id));
+        }
+        else {
+            let cartArray = [...cart]
+            let productIndex = cartArray.findIndex(val=> val._id===id);
+            cartArray[productIndex].quantity = productQuantity;
+            setCart(cartArray);
+        }
+    }
 
     return (
         isLoading ? <Loader /> :
@@ -34,6 +52,7 @@ const Product = () => {
                     productPrice={product.price}
                     isProduct
                     isreverse
+                    cartFunction={addToCart}
                 />
                 <div className="product_page___feature_container">
                     <div className="product_page___feature">
