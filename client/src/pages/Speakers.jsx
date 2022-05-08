@@ -3,6 +3,7 @@ import Card from '../component/Card';
 import { getCategoryProducts } from '../actions/product';
 import Loader from '../component/Loader';
 import useLocalStorage from '../customHook/useLocalStorage';
+
 const Speakers = () => {
 
   const [isLoading, setIsLoading] = useState(true)
@@ -16,7 +17,6 @@ const Speakers = () => {
     }
     getData();
   }, [])
-
 
   return (
     <>

@@ -10,7 +10,6 @@ const Home = () => {
   const [isLoading, setIsLoading] = useState(true)
   const [featuredProducts, setFeaturedProducts] = useLocalStorage("featuredProducts", null)
 
-
   useEffect(() => {
     const getData = async () => {
       const data = await getFeaturedProducts();
@@ -18,7 +17,7 @@ const Home = () => {
       setIsLoading(false)
     }
     getData();
-  }, [setFeaturedProducts])
+  }, [])
 
   if (isLoading) {
     return (

@@ -19,7 +19,6 @@ const Earphones = () => {
     getData();
   }, [])
 
-
   return (
     <>
       <div className="page_title">
