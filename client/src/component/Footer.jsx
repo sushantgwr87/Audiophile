@@ -15,9 +15,9 @@ const Footer = () => {
             </div>
             <ul className={styles.footer_navbar}>
                 <li><Link to="/">Home</Link></li>
-                <li><Link to="/stories">Stories</Link></li>
-                <li><Link to="/features">Features</Link></li>
-                <li><Link to="/pricing">Pricing</Link></li>
+                <li><Link to="/headphones">Headphones</Link></li>
+                <li><Link to="/speakers">Speakers</Link></li>
+                <li><Link to="/earphones">Earphones</Link></li>
             </ul>
             <p className={styles.footer_note}>
                 Audiophile Ecommerce Website project, made by Sushant Gangwar, is for purchasing audio accessories for all music lovers.
