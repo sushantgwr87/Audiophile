@@ -1,8 +1,8 @@
 import { useState } from 'react'
 
-const CounterButton = ({ handleCallback }) => {
+const CounterButton = ({ handleCallback, quantity=1 }) => {
 
-    const [count, setCount] = useState(1);
+    const [count, setCount] = useState(quantity);
 
     const handleDecrement = () => {
         if (count === 0)
