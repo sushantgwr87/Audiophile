@@ -1,33 +1,37 @@
-.loader_wrapper  {
+/* .loader_wrapper  {
     position: fixed;
     width: 100%;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+    perspective: 300px;
 }
 .loader_logo {
     width: 200px;
+    transform-origin: 0;
+    animation: draw 0.2s ease infinite;
 }
 .loader_circle {
-    fill:none;
+    fill: #030529;
     stroke: #030529;
     stroke-miterlimit:10;
     stroke-width:8px;
-    animation: draw 1.5s ease infinite;
 }
 @keyframes draw {
+  0% {
+    transform: rotateX(-90deg);
+  }
   100% {
-    stroke-dashoffset: 0;
+    transform: rotateX(90deg);
   }
 }
 .letter {
-    fill: #030529;
+    fill: var(--primaryColor);
     animation: logo_show 1s 1.8s ease forwards,spread 1s 2.5s ease forwards;
     opacity: 0;
 }
-/* logo letter split pre-styling */
-.G_up_part {
+=.G_up_part {
     transform: translate(-529.1px, -204px);
 }
 .G_down_part {
@@ -42,7 +46,6 @@
 .S_upCurve_part {
     transform: translate(-522.7px, -193.1px);
 }
-/* loader animation */
 @keyframes logo_show {
     0% {
         opacity: 0;
@@ -54,5 +57,42 @@
 @keyframes spread {
     100% {
         transform: translate(-527.5px, -196.5px);
+    }
+} */
+
+.ldshourglass {
+    display: block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+    margin: auto;
+}
+
+.ldshourglass:after {
+    content: " ";
+    display: block;
+    border-radius: 50%;
+    width: 0;
+    height: 0;
+    margin: 8px;
+    box-sizing: border-box;
+    border: 32px solid var(--buttonColor);
+    border-color: var(--buttonColor) transparent var(--buttonColor) transparent;
+    animation: ldshourglass 1.2s infinite;
+}
+
+@keyframes ldshourglass {
+    0% {
+        transform: rotate(0);
+        animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    }
+
+    50% {
+        transform: rotate(900deg);
+        animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+
+    100% {
+        transform: rotate(1800deg);
     }
 }
