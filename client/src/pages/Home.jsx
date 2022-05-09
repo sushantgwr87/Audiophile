@@ -8,13 +8,15 @@ import Loader from '../component/Loader';
 const Home = () => {
 
   const [isLoading, setIsLoading] = useState(true)
-  const [featuredProducts, setFeaturedProducts] = useLocalStorage("featuredProducts", null)
+  const [featuredProducts, setFeaturedProducts] = useLocalStorage("featuredProducts", [])
 
   useEffect(() => {
     const getData = async () => {
       const data = await getFeaturedProducts();
-      setFeaturedProducts(data);
-      setIsLoading(false)
+      if (!data.error) {
+        setFeaturedProducts(data.data);
+        setIsLoading(false)
+      }
     }
     getData();
   }, [])
