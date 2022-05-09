@@ -17,7 +17,7 @@ const Navbar = () => {
     const sidebar = useRef(false);
 
     const handleModalNav = () => {
-        // setShowSidebar(!showSidebar);
+        setShowSidebar(!showSidebar);
         setModalShow(true);
     }
 
