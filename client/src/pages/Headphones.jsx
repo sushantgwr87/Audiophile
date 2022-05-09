@@ -12,8 +12,10 @@ const Headphones = () => {
   useEffect(() => {
     const getData = async () => {
       const data = await getCategoryProducts("headphones");
-      setproductData(data);
-      setIsLoading(false)
+      if (!data.error) {
+        setproductData(data.data);
+        setIsLoading(false)
+      }
     }
     getData();
   }, [])
