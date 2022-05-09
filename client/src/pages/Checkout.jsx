@@ -2,16 +2,19 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import CheckoutCard from '../component/CheckoutCard';
 import useLocalStorage from '../customHook/useLocalStorage';
+import useCartPrice from '../customHook/useCartPrice';
+import { useNavigate } from 'react-router-dom';
 
 const Checkout = () => {
 
+  const navigate = useNavigate();
+
   const [cart, setCart] = useLocalStorage("cart", []);
-  const totalPrice = 2000
+  const totalPrice = useCartPrice()
   
   useEffect(() => {
     setCart(JSON.parse(localStorage.getItem("cart")));
   });
-
 
   const vatPrice = 1045;
   const shippingPrice = 50;
@@ -43,6 +46,10 @@ const Checkout = () => {
   const handleFormSubmit = (e) => {
     e.prevent.default();
     console.log(formData);
+  }
+
+  if(cart===null || cart.length===0) {
+    navigate("/")
   }
 
   return (
@@ -121,10 +128,10 @@ const Checkout = () => {
               <h3>Grand Total</h3>
             </div>
             <div className="summary_values">
-              <h3>&#8377; {totalPrice.current}</h3>
+              <h3>&#8377; {totalPrice}</h3>
               <h3>&#8377; {shippingPrice}</h3>
               <h3>&#8377; {vatPrice}</h3>
-              <h3>&#8377; {vatPrice + shippingPrice + totalPrice.current}</h3>
+              <h3>&#8377; {vatPrice + shippingPrice + totalPrice}</h3>
             </div>
           </div>
           <button>Continue and Pay</button>
