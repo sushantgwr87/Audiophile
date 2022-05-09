@@ -5,6 +5,7 @@ import useMountTransition from "../customHook/useMountTransition";
 import styles from "../styles/modal.module.css";
 import CheckoutCard from "./CheckoutCard";
 import useLocalStorage from "../customHook/useLocalStorage";
+import useCartPrice from "../customHook/useCartPrice";
 
 const CartModal = ({ show, onClose }) => {
 
@@ -12,8 +13,10 @@ const CartModal = ({ show, onClose }) => {
   const [isCartEmpty, setIsCartEmpty] = useState(true);
 
   const [cartList, setCartList] = useLocalStorage("cart", [])
-  console.log(cartList)
-  const [totalPrice, setTotalPrice] = useLocalStorage("totalCartPrice", cartList ? cartList.reduce((sum, val) => sum + val.price, 0) : 0)
+  // console.log(cartList)
+
+  const totalPrice = useCartPrice();
+  // const [totalPrice, setTotalPrice] = useLocalStorage("totalCartPrice", cartList ? cartList.reduce((sum, val) => sum + val.price*val.quantity, 0) : 0)
 
   useEffect(() => {
     const closeOnEscapeKeyDown = e => {
@@ -28,10 +31,9 @@ const CartModal = ({ show, onClose }) => {
   useEffect(() => {
     if (localStorage.getItem("cart")) {
       setCartList(JSON.parse(localStorage.getItem("cart")));
-      // let cartArray = JSON.parse(localStorage.getItem("cart"));
-      setTotalPrice(cartList && cartList.reduce((sum, val) => sum + +val.price, 0))
+      // setTotalPrice(cartList ? cartList.reduce((sum, val) => sum + val.price, 0) : 0)
     }
-    if(cartList&& cartList.length>0)
+    if (cartList && cartList.length > 0)
       setIsCartEmpty(false)
   }, [show]);
 
@@ -43,8 +45,16 @@ const CartModal = ({ show, onClose }) => {
       setCartList(cartArray);
     }
     else if (productQuantity === 0 && productIndex === -1) {
+      cartArray = cartList.filter(val => val._id !== id);
       setCartList(cartList.filter(val => val._id !== id));
     }
+  }
+
+  const clearCart = () => {
+    console.log("cleared")
+    // localStorage.removeItem("cart");
+    setIsCartEmpty(true)
+    setCartList([]);
   }
 
   const cartEmpty = (
@@ -57,8 +67,8 @@ const CartModal = ({ show, onClose }) => {
   const cartFilled = (
     <>
       <div className={styles.modal_header}>
-        <h3>Cart - <span>2</span></h3>
-        <button>Remove All</button>
+        <h3>Cart - <span>{cartList && cartList.length}</span></h3>
+        <button onClick={clearCart}>Remove All</button>
       </div>
       <div className={styles.modal_body}>
         {cartList && cartList.map((value, index) =>
