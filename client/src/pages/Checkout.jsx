@@ -4,10 +4,17 @@ import CheckoutCard from '../component/CheckoutCard';
 import useLocalStorage from '../customHook/useLocalStorage';
 import useCartPrice from '../customHook/useCartPrice';
 import { useNavigate } from 'react-router-dom';
+import CartModal from '../component/CartModal';
 
 const Checkout = () => {
 
   const navigate = useNavigate();
+
+  const [modalShow, setModalShow] = useState(false);
+
+  const handlePaymentModal = () => {
+    setModalShow(true);
+}
 
   const [cart, setCart] = useLocalStorage("cart", []);
   const totalPrice = useCartPrice()
@@ -134,9 +141,10 @@ const Checkout = () => {
               <h3>&#8377; {vatPrice + shippingPrice + totalPrice}</h3>
             </div>
           </div>
-          <button>Continue and Pay</button>
+          <button onClick={handlePaymentModal}>Confirm the Pay</button>
         </div>
       </div>
+      <CartModal onClose={() => setModalShow(false)} show={modalShow} isPaymentModal={true} />
     </div>
   )
 }
