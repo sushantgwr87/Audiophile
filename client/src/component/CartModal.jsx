@@ -7,35 +7,14 @@ import CheckoutCard from "./CheckoutCard";
 import useLocalStorage from "../customHook/useLocalStorage";
 import useCartPrice from "../customHook/useCartPrice";
 
-const CartModal = ({ show, onClose }) => {
+const CartModal = ({ show, onClose, isPaymentModal=false }) => {
 
   const hasTransitionedIn = useMountTransition(show, 1000);
   const [isCartEmpty, setIsCartEmpty] = useState(true);
 
   const [cartList, setCartList] = useLocalStorage("cart", [])
-  // console.log(cartList)
 
   const totalPrice = useCartPrice();
-  // const [totalPrice, setTotalPrice] = useLocalStorage("totalCartPrice", cartList ? cartList.reduce((sum, val) => sum + val.price*val.quantity, 0) : 0)
-
-  useEffect(() => {
-    const closeOnEscapeKeyDown = e => {
-      if ((e.charCode || e.keyCode) === 27) {
-        onClose();
-      }
-    };
-    document.body.addEventListener("keydown", closeOnEscapeKeyDown);
-    return () => document.body.removeEventListener("keydown", closeOnEscapeKeyDown);
-  }, [onClose]);
-
-  useEffect(() => {
-    if (localStorage.getItem("cart")) {
-      setCartList(JSON.parse(localStorage.getItem("cart")));
-      // setTotalPrice(cartList ? cartList.reduce((sum, val) => sum + val.price, 0) : 0)
-    }
-    if (cartList && cartList.length > 0)
-      setIsCartEmpty(false)
-  }, [show]);
 
   const updateCart = (id, productQuantity) => {
     let cartArray = cartList
@@ -52,10 +31,35 @@ const CartModal = ({ show, onClose }) => {
 
   const clearCart = () => {
     console.log("cleared")
-    // localStorage.removeItem("cart");
     setIsCartEmpty(true)
     setCartList([]);
   }
+
+  useEffect(() => {
+    const closeOnEscapeKeyDown = e => {
+      if ((e.charCode || e.keyCode) === 27) {
+        onClose();
+      }
+    };
+    document.body.addEventListener("keydown", closeOnEscapeKeyDown);
+    return () => document.body.removeEventListener("keydown", closeOnEscapeKeyDown);
+  }, [onClose]);
+
+  useEffect(() => {
+    if (localStorage.getItem("cart")) {
+      setCartList(JSON.parse(localStorage.getItem("cart")));
+    }
+    if (cartList && cartList.length > 0)
+      setIsCartEmpty(false)
+    else if (cartList && cartList.length === 0)
+      setIsCartEmpty(true)
+  }, [show,cartList]);
+
+  const paymentModal = (
+    <div className={styles.modal___payment_modal}>
+      <h3>Thank you for your order</h3>
+    </div>
+  )
 
   const cartEmpty = (
     <div className={styles.modal___cart_empty}>
@@ -97,7 +101,9 @@ const CartModal = ({ show, onClose }) => {
   const modalContent = hasTransitionedIn || show ? (
     <div className={`${styles.modal_overlay} ${hasTransitionedIn && show ? styles.modal_show : styles.modal_hide}`} onClick={onClose}>
       <div className={`${styles.modal} ${hasTransitionedIn && show ? styles.modal_show : styles.modal_hide}`} onClick={e => e.stopPropagation()}>
-        {isCartEmpty ? cartEmpty : cartFilled}
+        {isPaymentModal ? paymentModal : (
+          isCartEmpty ? cartEmpty : cartFilled
+        )}
       </div>
     </div>
   ) : null
