@@ -13,7 +13,7 @@ const Product = () => {
     const navigate = useNavigate();
 
     const [cart, setCart] = useLocalStorage("cart", [])
-    console.log(cart)
+    // console.log(cart)
 
     const [isLoading, setIsLoading] = useState(true)
     const [product, setproduct] = useLocalStorage("featchedProduct", null)
@@ -21,8 +21,10 @@ const Product = () => {
     useEffect(() => {
         const getData = async () => {
             const data = await getProduct(id);
-            setproduct(data);
-            setIsLoading(false)
+            if (!data.error) {
+                setproduct(data.data);
+                setIsLoading(false)
+            }
         }
         getData();
     }, [id])
