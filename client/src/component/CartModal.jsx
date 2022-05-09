@@ -7,7 +7,7 @@ import CheckoutCard from "./CheckoutCard";
 import useLocalStorage from "../customHook/useLocalStorage";
 import useCartPrice from "../customHook/useCartPrice";
 
-const CartModal = ({ show, onClose, isPaymentModal=false }) => {
+const CartModal = ({ show, onClose, isPaymentModal = false, addressCity = null }) => {
 
   const hasTransitionedIn = useMountTransition(show, 1000);
   const [isCartEmpty, setIsCartEmpty] = useState(true);
@@ -53,11 +53,23 @@ const CartModal = ({ show, onClose, isPaymentModal=false }) => {
       setIsCartEmpty(false)
     else if (cartList && cartList.length === 0)
       setIsCartEmpty(true)
-  }, [show,cartList]);
+  }, [show, cartList]);
 
   const paymentModal = (
     <div className={styles.modal___payment_modal}>
-      <h3>Thank you for your order</h3>
+      <h2>Thank you for your order</h2>
+      <p>Your order will be shipped to your city {addressCity}</p>
+      <div className={styles.payment_card}>
+        <div className={styles.payment_card___items}>
+          <h3>Total Items</h3>
+          <h4>{cartList.length}</h4>
+        </div>
+        <div className={styles.payment_card___price}>
+          <h3>Grand Total</h3>
+          <h4>&#8377; {totalPrice}</h4>
+        </div>
+      </div>
+      <Link to={"/"}>Back to Home</Link>
     </div>
   )
 
