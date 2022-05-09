@@ -13,7 +13,6 @@ export async function getCategoryProducts(category) {
         toast.error("Data fetch failed, Please refresh or try again later");
         return { error: true }
     }
-
 }
 
 export async function getFeaturedProducts() {
