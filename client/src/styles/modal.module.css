@@ -85,7 +85,6 @@
     padding: 10px 20px;
     font-weight: bold;
     outline: 2px solid var(--greyColor_dark);
-    /* border: 2px solid var(--greyColor_dark); */
     color: var(--greyColor_dark);
     letter-spacing: 1px;
     border-radius: 4px;
@@ -138,7 +137,69 @@
     background-color: var(--buttonColor);
     width: 100%;
     font-weight: bold;
-    /* color: var(--greyColor_light); */
+    color: var(--primaryColor);
+}
+.modal___payment_modal {
+    position: relative;
+    padding: 30px 10px;
+    display: block;
+}
+.modal___payment_modal h2{
+    font-family: var(--fontHead);
+    font-size: calc(20px + 1vw);
+    color: var(--secondaryColor);
+    text-transform: uppercase;
+}
+
+.modal___payment_modal p {
+    text-transform: none;
+    padding-top: 15px;
+    color: var(--greyColor);
+    font-family: var(--fontBody);
+    font-size: calc(14px + 0.3vw);
+}
+
+.payment_card {
+    display: flex;
+    margin: 40px auto;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.payment_card > div {
+    flex: 50%;
+    padding: 20px;
+}
+
+.payment_card___items {
+    background-color: var(--greyColor_light);
+    font-family: var(--fontBody);
+    letter-spacing: 1px;
+    border-radius: 5px 0 0 5px;
+}
+
+.payment_card___price {
+    letter-spacing: 2px;
+    border-radius: 0 5px 5px 0;
+    font-family: var(--fontBody);
+    background-color: var(--secondaryColor);
+    color: var(--greyColor_light);
+}
+
+.payment_card > div h4 {
+    padding-top: 20px;
+    font-weight: lighter;
+}
+
+.modal___payment_modal a {
+    font-family: var(--fontBody);
+    letter-spacing: 1px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-align: center;
+    background-color: var(--buttonColor);
+    width: 100%;
+    font-weight: bold;
     color: var(--primaryColor);
 }
 
@@ -151,8 +212,12 @@
 
 @media only screen and (max-width: 550px) {
     .modal {
-        border-radius: 0;
+        border-radius: 3px;
         width: 90%;
         padding: 20px 10px;
+    }
+
+    .modal___payment_modal {
+        padding: 10px;
     }
 }
