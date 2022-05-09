@@ -144,7 +144,7 @@ const Checkout = () => {
           <button onClick={handlePaymentModal}>Confirm the Pay</button>
         </div>
       </div>
-      <CartModal onClose={() => setModalShow(false)} show={modalShow} isPaymentModal={true} />
+      <CartModal onClose={() => setModalShow(false)} show={modalShow} isPaymentModal={true} addressCity={city} />
     </div>
   )
 }
