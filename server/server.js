@@ -17,6 +17,8 @@ app.use(express.static('public'));
 // get driver connection
 const db = require("./db/connector");
 
+app.get('/', (req, res) => { res.send('Hello from SG Server!')})
+
 app.listen(port, () => {
   db.on("error", console.error.bind(console, "connection error: "));
   db.once("open", function () {
