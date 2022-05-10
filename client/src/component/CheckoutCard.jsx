@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import CounterButton from './CounterButton';
 import styles from '../styles/checkoutCard.module.css'
+import domainurl from '../domainAPI';
 
 const CheckoutCard = ({ productId, isModal = false, imagePath, productName, productPrice = null, productQuantity, cartUpdate }) => {
 
