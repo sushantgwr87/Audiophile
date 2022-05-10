@@ -9,8 +9,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
-    "start-server": "nodemon dist/main.js"
+    "start": "node server.js"
   },
   "keywords": [
     "MongoDB",
@@ -27,8 +26,5 @@
     "mongoose": "^6.3.2",
     "multer": "^1.4.4",
     "uuid": "^8.3.2"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.16"
   }
 }
