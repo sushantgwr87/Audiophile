@@ -18,7 +18,7 @@ The Frontend of this Ecommerce Website is made using ReactJs. Its design is comp
 Frontend is made using complex to simple components as well as is using some custom made Hooks.
 
 ### Complex Components
-[Card Component]() or [Cart-Modal Component]() are some base example of how complex component can help you to reuse a component in more dynamic way. These components are used differently as per circumstances on different pages of website.
+[Card Component](https://github.com/sushantgwr87/Audiophile/blob/main/client/src/component/Card.jsx) or [Cart-Modal Component](https://github.com/sushantgwr87/Audiophile/blob/main/client/src/component/CartModal.jsx) are some base example of how complex component can help you to reuse a component in more dynamic way. These components are used differently as per circumstances on different pages of website.
 
 ### Custom Hooks
-Some unique custom hooks like [useCart]() or [useLocalStorage]() are use to provide better handling of data and more dynamic feel to the components as well as to website. You can check all custom hooks [here]()
+Some unique custom hooks like [useCart](https://github.com/sushantgwr87/Audiophile/blob/main/client/src/customHook/useCartPrice.js) or [useLocalStorage](https://github.com/sushantgwr87/Audiophile/blob/main/client/src/customHook/useLocalStorage.js) are use to provide better handling of data and more dynamic feel to the components as well as to website. You can check all custom hooks [here](https://github.com/sushantgwr87/Audiophile/tree/main/client/src/customHook)
