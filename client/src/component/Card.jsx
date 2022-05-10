@@ -2,7 +2,7 @@ import { useState } from 'react';
 import styles from '../styles/card.module.css';
 import { Link } from 'react-router-dom';
 import CounterButton from './CounterButton';
-import domainurl from '../domainAPI';
+import apiUrl from '../apiConfig';
 
 const Card = ({
     imagePath = null,
@@ -32,7 +32,7 @@ const Card = ({
         <div className={`${styles.card} ${isreverse && styles.card___reverse}`}>
             {imagePath &&
                 <div className={styles.card_photo}>
-                    <img src={domainurl + imagePath} alt='CardImage' />
+                    <img src={apiUrl + imagePath} alt='CardImage' />
                 </div>
             }
             <div className={styles.card_content}>

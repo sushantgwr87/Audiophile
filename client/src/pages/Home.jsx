@@ -4,7 +4,7 @@ import ProductCarousel from '../component/ProductCarousel';
 import { getFeaturedProducts } from '../actions/product';
 import useLocalStorage from '../customHook/useLocalStorage';
 import Loader from '../component/Loader';
-import domainurl from '../domainAPI';
+import apiUrl from '../apiConfig';
 
 const Home = () => {
 
@@ -37,7 +37,7 @@ const Home = () => {
       <>
         <div className='featured_card'>
           <div className='featured_card___photo'>
-            <img src={domainurl + headphoneData.path} alt='CardImage' />
+            <img src={apiUrl + headphoneData.path} alt='CardImage' />
           </div>
           <div className='featured_card___content'>
             <h5>{headphoneData.quote}</h5>
@@ -52,7 +52,7 @@ const Home = () => {
         <div className="featured_product___card_list">
           <div className="featured_product___card">
             <div className="featured_product___image">
-              <img src={domainurl + speakerOneData.path} alt='CardImage' />
+              <img src={apiUrl + speakerOneData.path} alt='CardImage' />
             </div>
             <div className='featured_product___content'>
               <h3>{speakerOneData.longTitle}</h3>
@@ -62,7 +62,7 @@ const Home = () => {
           </div>
           <div className="featured_product___card">
             <div className="featured_product___image">
-              <img src={domainurl + speakerTwoData.path} alt='CardImage' />
+              <img src={apiUrl + speakerTwoData.path} alt='CardImage' />
             </div>
             <div className='featured_product___content'>
               <h3>{speakerTwoData.longTitle}</h3>
@@ -71,7 +71,7 @@ const Home = () => {
           </div>
           <div className="featured_product___card">
             <div className="featured_product___image">
-              <img src={domainurl + earphoneData.path} alt='CardImage' />
+              <img src={apiUrl + earphoneData.path} alt='CardImage' />
             </div>
             <div className='featured_product___content'>
               <h3>{earphoneData.longTitle}</h3>
