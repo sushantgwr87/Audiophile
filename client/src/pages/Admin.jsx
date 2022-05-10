@@ -45,7 +45,7 @@ const Admin = () => {
         console.log(formData)
     }
 
-    const auth = true;
+    const auth = process.env.REACT_APP_AUTH;
 
     return (
         <div className='admin_page'>
