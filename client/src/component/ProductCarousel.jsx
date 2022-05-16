@@ -3,17 +3,17 @@ import { Link } from 'react-router-dom';
 
 const productData = [
     {
-        path: "/assets/headphone_white2.png",
+        path: "/assets/carousel_headphones.png",
         head: "Headphones",
         link: "/headphones"
     },
     {
-        path: "/assets/earpods_purple2.png",
+        path: "/assets/carousel_earphones.png",
         head: "Earphones",
         link: "/earphones"
     },
     {
-        path: "/assets/speaker_top2.png",
+        path: "/assets/carousel_speaker.png",
         head: "Speakers",
         link: "/speakers"
     },
