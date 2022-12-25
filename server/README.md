@@ -10,6 +10,11 @@
   <img src="https://img.shields.io/badge/-mongodb-black?style=for-the-badge&logo=mongodb" alt="Javascript" height="35">
 </p>
 
+# Important Update December
+The hosting of server is shifted from Heroku to [Render](https://render.com/) as Heroku stopped free hosting since November.
+
+<hr />
+
 # Audiophile Server (Backend)
 The Backend Server of this Ecommerce Website is made using NodeJs, ExpressJs and MongoDb database.
 
