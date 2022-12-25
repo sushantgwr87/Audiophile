@@ -32,6 +32,7 @@ Frontend is made using mainly React.js and CSS. Server is made using Node.js, Ex
 It is made using React.JS and all designing is done by Vanila CSS.
 
 ### Backend
+#### Important Update December : The hosting of server is shifted from Heroku to [Render](https://render.com/) as Heroku stopped free hosting since November.
 It is made using Node.Js and Express.Js which in turn is connected to cloud database of MongoDb.
 
 ### Database
