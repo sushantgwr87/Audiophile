@@ -23,7 +23,7 @@ const Footer = () => {
                 Audiophile Ecommerce Website project, made by Sushant Gangwar, is for purchasing audio accessories for all music lovers.
             </p>
             <div className={styles.footer_copyright}>
-                <h3>Copyright 2022. All Rights Reserved.</h3>
+                <h3>Copyright {new Date().getFullYear()}. All Rights Reserved.</h3>
             </div>
             <div className={styles.footer_outLinks}>
                 <a href={portfolioLink} target="_blank" rel="noopener noreferrer">
